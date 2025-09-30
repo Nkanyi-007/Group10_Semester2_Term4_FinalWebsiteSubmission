@@ -14,16 +14,16 @@
   <body>
     <!--Navbar-->
     <header class="navbar navbar-expand-lg px-3">
-        <div class = "container-fluid">
+        <div class = "d-flex align-items-center w-100 justify-content-between">
             <a class ="navbar-brand" href="#">
         <img src="assets/logo.jpeg" alt="Logo" class="logo" />
         </a>
-        <nav class = "navbar-nav me-auto mb-2 mb-lg-0">
+        <nav class = "navbar-nav flex-row">
           <a class = "nav-link" href="#">Home</a>
           <a class="nav-link active" href="#" class="active">Movie Library</a>
           <a class="nav-link" href="#">Watch List</a>
         </nav>
-        <form class="d-flex" role="search">
+        <form class="d-flex mx-3" role="search">
             <input
             id="searchInput"
             class="form-control me-2"
@@ -31,7 +31,7 @@
             placeholder="Search movies..."
             aria-label="Search"
          />
-      <button id="searchBtn" class="btn btn-outline-light" type="button">
+      <button id="searchBtn" class="btn btn-outline-dark" type="button">
         🔍
       </button>
       </form>
@@ -39,7 +39,7 @@
     </header>
 
     <!--Filters-->
-    <section class="filters container my-3 text-center">
+    <section class="filters container-fluid my-5 text-center">
       <button id="filterBtn" class="btn btn-primary me-2">Filters</button>
       <button id="gridBtn" class="btn btn-secondary">Grid</button>
     </section>
