@@ -1,4 +1,4 @@
-b//Setting up the TMDB API
+//Setting up the TMDB API
 const API_KEY = "0d4ce6a4966a08401c202627e29b935a";
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMG_BASE_URL = "https://image.tmdb.org/t/p/w500";
@@ -36,20 +36,21 @@ function displayMovies(movies) {
     col.classList.add("col");
 
     col.innerHTML = `
-     <div class = "movie-card">
-     <img src="${
-        movie.poster_path
-        ? IMG_BASE_URL + movie.poster_path
-        : "/Movie\ Library/assets/placeholder.jpg"}
-        " alt="${movie.title}">
-        <h3${movie.title}</h3>
-        <button onclick="addToWatchlist('${movie.id}'>Add</button>
-        </div>
-    `; 
+      <div class="movie-card">
+        <img src="${
+          movie.poster_path
+            ? IMG_BASE_URL + movie.poster_path
+            : "/Movie Library/assets/placeholder.jpg"
+        }" alt="${movie.title}">
+        <h3>${movie.title}</h3>
+        <button onclick="addToWatchlist('${movie.id}')">Add</button>
+      </div>
+    `;
 
     movieGrid.appendChild(col);
   });
 }
+
 
 //Search functionality
 searchBtn.addEventListener("click", () => {
