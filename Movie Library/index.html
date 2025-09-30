@@ -8,30 +8,48 @@
   </head>
 
   <body>
-
     <!--Navbar-->
-    <header class = "navbar">
-        <div class = "nav-left">
-            <img src ="assets/logo.jpeg" alt = "Logo" class="logo">
-            <nav>
-                <a href = "#">Home</a>
-                <a href = "#" class="active">Movie Library</a>
-                <a href = "#">Watch List</a>
-            </nav>
-        </div>
-        <div class = "nav-right">
-            <input type="text" id="searchInput" placeholder="Search movies...">
-            <button id="searchBtn">🔍</button>
-            <div class = "profile">👤</div>
-        </div>
+    <header class="navbar">
+      <div class="nav-left">
+        <img src="assets/logo.jpeg" alt="Logo" class="logo" />
+        <nav>
+          <a href="#">Home</a>
+          <a href="#" class="active">Movie Library</a>
+          <a href="#">Watch List</a>
+        </nav>
+      </div>
+      <div class="nav-right">
+        <input type="text" id="searchInput" placeholder="Search movies..." />
+        <button id="searchBtn">🔍</button>
+        <div class="profile">👤</div>
+      </div>
     </header>
 
     <!--Filters-->
     <section class="filters">
-        <button id="filterBtn">Filters</button>
-        <button id="gridBtn">Grid</button>
+      <button id="filterBtn">Filters</button>
+      <button id="gridBtn">Grid</button>
     </section>
 
-    
+    <!--Movie Grid-->
+    <main class="movie-grid" id="movieGrid">
+      <!--inject movies here via js-->
+    </main>
+
+    <!--Footer-->
+    <footer class="footer">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <img src="assets/logo.jpeg" alt="Logo" class="logo" />
+        </div>
+      </div>
+      <div class="footer-right">
+        <a href="#">Social</a>
+        <a href="#">Social</a>
+        <a href="#">Social</a>
+      </div>
+    </footer>
+
+    <script src="MovieLibrary.js"></script>
   </body>
 </html>
