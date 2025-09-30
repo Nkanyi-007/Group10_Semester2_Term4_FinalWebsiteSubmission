@@ -15,12 +15,20 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //The fetch movies function
-async function fetchMovies(url, limit = 20) {
+async function fetchMovies(url, limit = 25) {
   try {
-    const res = await fetch(url);
-    const data = await res.json();
+    let movies = [];
 
-    const movies = data.results.slice(0, limit);
+    let page = 1;
+    while (movies.length < limit) {
+      const res = await fetch(`${url}&page=${page}`);
+      const data = await res.json();
+
+      movies = [...movies, ...data.results];
+      page++;
+    }
+    movies = movies.slice(0, limit);
+
     displayMovies(movies);
   } catch (error) {
     console.error("Error fetching movies: ", error);
