@@ -1,0 +1,74 @@
+/*General*/
+body{
+    font-family:Arial, sans-serif;
+    background-color: #121212;
+    color: #eee;
+    margin: 0;
+    padding: 0;
+}
+
+/*Navbar*/
+.navbar.logo{
+    height: 40px;
+    border-radius:6px;
+}
+
+.nav-link{
+    color: #ccc !important;
+}
+
+.nav-link.active,
+.nav-link:hover{
+    color: #fff !important;
+}
+
+/*Movie Cards*/
+.movie-card{
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    overflow:hidden;
+    text-align: center;
+    transition: transform 0.2s ease;
+    padding: 10px;
+}
+
+.movie-card:hover{
+    transform: scale(1.05);
+}
+
+.movie-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.movie-card h3{
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #fff;
+}
+
+.movie-card button{
+    background: #ff3c00;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.movie-card button:hover {
+    background: #e63600;
+}
+
+/*footer*/
+.footer{
+    font-size: 0.9rem;
+}
+
+.footer a{
+    text-decoration: none;
+}
+
+.footer a:hover{
+    text-decoration: underline;
+}

@@ -39,30 +39,39 @@
     </header>
 
     <!--Filters-->
-    <section class="filters">
-      <button id="filterBtn">Filters</button>
-      <button id="gridBtn">Grid</button>
+    <section class="filters container my-3 text-center">
+      <button id="filterBtn" class="btn btn-primary me-2">Filters</button>
+      <button id="gridBtn" class="btn btn-secondary">Grid</button>
     </section>
 
     <!--Movie Grid-->
-    <main class="movie-grid" id="movieGrid">
+    <main class="container">
+        <div
+        class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"
+        id="movieGrid"
+        >
       <!--inject movies here via js-->
+      </div>
     </main>
 
     <!--Footer-->
-    <footer class="footer">
-      <div class="footer-left">
-        <div class="footer-logo">
+    <footer class="footer bg-dark text-light py-3 mt-5">
+      <div class="container d-flex justify-content-between">
+        <div class="footer-left d-flex align-items-center">
           <img src="assets/logo.jpeg" alt="Logo" class="logo" />
+          <span>Movie Library</span>
         </div>
-      </div>
       <div class="footer-right">
-        <a href="#">Social</a>
-        <a href="#">Social</a>
-        <a href="#">Social</a>
+        <a href="https://www.facebook.com/theopenwindow/" class="text-light me-3">Facebook</a>
+        <a href="https://x.com/open_window_" class="text-light me-3">X</a>
+        <a href="https://www.instagram.com/openwindowinstitute/?hl=en" class="text-light">Instagram</a>
+      </div>
       </div>
     </footer>
 
+    <!--Bootstrap js-->
+    <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!--Custom js-->
     <script src="/js/MovieLibrary.js"></script>
   </body>
 </html>
