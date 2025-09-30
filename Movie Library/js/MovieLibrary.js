@@ -22,3 +22,5 @@ async function fetchMovies(url) {
         console.error("Error fetching movies: ", error);
     }
 }
+
+//Displaying movies on the grid
