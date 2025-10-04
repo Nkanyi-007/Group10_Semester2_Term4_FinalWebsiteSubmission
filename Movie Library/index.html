@@ -44,6 +44,38 @@
       <button id="gridBtn" class="btn btn-secondary">Grid</button>
     </section>
 
+    <div id="filerMenu" class="filter-menu container text-dark bg-light p-3 rounded shadow" style="display:none; max-width:900px;">
+      <div class="row g-3">
+        <div class="col-md-3">
+          <label for="filterType" class="form-label">Filter by:</label>
+          <select id="filterType" class="form-select">
+            <option value="all">All Movies</option>
+            <option value="genre">Genre</option>
+            <option value="year">Year Released</option>
+            <option value="score">IMDB Score</option>
+          </select>
+        </div>
+
+        <!--Genre-->
+        <div class="col-md-3 filter-option" id="genreFilter" style="display:none">
+          <label for="genreSelect" class="form-label">Genre</label>
+          <select id="genreSelect" class="form-select">
+            <option value="">Select...</option>
+          </select>
+        </div>
+
+        <!--Year-->
+        <div class="col-md-3 filter-option" id="yearFilter" style="display:none;">
+          <label for="yearSelect" class="form-label">Year</label>
+          <select id="yearSelect" class="form-select">
+            <option value="">Select...</option>
+          </select>
+        </div>
+
+        
+      </div>
+    </div>
+
     <!--Movie Grid-->
     <main class="container">
         <div
