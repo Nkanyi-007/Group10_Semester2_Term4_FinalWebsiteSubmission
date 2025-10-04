@@ -52,7 +52,7 @@
             <option value="all">All Movies</option>
             <option value="genre">Genre</option>
             <option value="year">Year Released</option>
-            <option value="score">IMDB Score</option>
+            <option value="rating">IMDB Rating</option>
           </select>
         </div>
 
@@ -72,7 +72,22 @@
           </select>
         </div>
 
-        
+        <!--Rating-->
+        <div class="col-md-3 filter-option" id="scoreFilter" style="display:none;">
+          <label for="ratingSelect" class="form-label">IMDB Rating</label>
+          <select id="ratingSelect" class="form-select">
+            <option value="">Select...</option>
+            <option value="9">9+</option>
+            <option value="8">8+</option>
+            <option value="7">7+</option>
+            <option value="6">6+</option>
+            <option value="5">5+</option>
+            <option value="4">4+</option>
+            <option value="3">3+</option>
+            <option value="2">2+</option>
+            <option value="1">1+</option>
+          </select>
+        </div>
       </div>
     </div>
 
