@@ -56,8 +56,12 @@ function displayMovies(movies) {
         }" alt="${movie.title}">
         <h3>${movie.title}</h3>
         <div class="d-flex justify-content-center gap-2 mt-2">
-        <button class= "btn btn-sm btn-dark" onclick="goToDetails(${movie.id})">Details</button>
-         <button class="btn btn-sm btn-success" onclick="goToWatchlist(${movie.id})">Add to Watchlist</button>
+        <button class= "btn btn-sm btn-dark" onclick="goToDetails(${
+          movie.id
+        })">Details</button>
+         <button class="btn btn-sm btn-success" onclick="goToWatchlist(${
+           movie.id
+         })">Add to Watchlist</button>
          </div>
       </div>
     `;
@@ -66,11 +70,11 @@ function displayMovies(movies) {
   });
 }
 
-function goToDetails(movieId){
+function goToDetails(movieId) {
   window.location.href = `movie.html?id=${movieId}`;
 }
 
-function goToWatchList (movieId){
+function goToWatchList(movieId) {
   window.location.href = "watchlist.html";
 }
 

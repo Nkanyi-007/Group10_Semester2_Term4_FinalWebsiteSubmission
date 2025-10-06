@@ -65,9 +65,8 @@ header .nav-link.active {
 
 .filters,
 .filter-menu {
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
-
 
 .filters button {
   background: none;
@@ -86,7 +85,7 @@ header .nav-link.active {
   font-weight: bold;
 }
 
-main.container{
+main.container {
   margin-top: 1rem;
 }
 
