@@ -59,9 +59,12 @@ function displayMovies(movies) {
         <button class= "btn btn-sm btn-dark" onclick="goToDetails(${
           movie.id
         })">Details</button>
-         <button class="btn btn-sm btn-success" onclick="goToWatchlist(${
-           movie.id
-         })">Add to Watchlist</button>
+         <button class="btn btn-sm btn-success" onclick='addToWatchlist(${JSON.stringify(
+           movie
+         )})'>
+  Add to Watchlist
+</button>
+
          </div>
       </div>
     `;
@@ -75,7 +78,7 @@ function goToDetails(movieId) {
 }
 
 function goToWatchList(movieId) {
-  window.location.href = "watchlist.html";
+  window.location.href = "Watchlist.html";
 }
 
 //Search functionality
@@ -90,8 +93,16 @@ searchBtn.addEventListener("click", () => {
 });
 
 //Placeholder Watchlist
-function addToWatchlist(movieId) {
-  alert(`Movie ${movieId} added to Watchlist!`);
+function addToWatchlist(movie) {
+  let watchList = JSON.parse(localStorage.getItem("watchList")) || [];
+
+  if (watchList.some((m) => m.id === movie.id)) {
+    alert(`${movie.title} is already in your Watchlist!`);
+    return;
+  }
+  watchList.push(movie);
+  localStorage.setItem("watchList", JSON.stringify(watchList));
+  alert(`${movie.title} added to your Watchlist!`);
 }
 
 //Filter function
