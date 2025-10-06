@@ -55,12 +55,23 @@ function displayMovies(movies) {
             : "/Movie Library/assets/placeholder.jpg"
         }" alt="${movie.title}">
         <h3>${movie.title}</h3>
-        <button onclick="addToWatchlist('${movie.id}')">Add</button>
+        <div class="d-flex justify-content-center gap-2 mt-2">
+        <button class= "btn btn-sm btn-dark" onclick="goToDetails(${movie.id})">Details</button>
+         <button class="btn btn-sm btn-success" onclick="goToWatchlist(${movie.id})">Add to Watchlist</button>
+         </div>
       </div>
     `;
 
     movieGrid.appendChild(col);
   });
+}
+
+function goToDetails(movieId){
+  window.location.href = `movie.html?id=${movieId}`;
+}
+
+function goToWatchList (movieId){
+  window.location.href = "watchlist.html";
 }
 
 //Search functionality
