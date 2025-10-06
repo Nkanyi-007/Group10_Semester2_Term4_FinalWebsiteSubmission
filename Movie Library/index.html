@@ -20,7 +20,7 @@
         </a>
         <nav class = "navbar-nav flex-row">
           <a class = "nav-link" href="#">Home</a>
-          <a class="nav-link active" href="#" class="active">Movie Library</a>
+          <a class="nav-link active" href="MovieLibrary.html">Movie Library</a>
           <a class="nav-link" href="#">Watch List</a>
         </nav>
         <form class="d-flex mx-3" role="search">
@@ -41,10 +41,9 @@
     <!--Filters-->
     <section class="filters container-fluid my-5 text-center">
       <button id="filterBtn" class="btn btn-primary me-2">Filters</button>
-      <button id="gridBtn" class="btn btn-secondary">Grid</button>
     </section>
 
-    <div id="filerMenu" class="filter-menu container text-dark bg-light p-3 rounded shadow" style="display:none; max-width:900px;">
+    <div id="filterMenu" class="filter-menu container text-dark bg-light p-3 rounded shadow" style="display:none; max-width:900px;">
       <div class="row g-3">
         <div class="col-md-3">
           <label for="filterType" class="form-label">Filter by:</label>
@@ -73,7 +72,7 @@
         </div>
 
         <!--Rating-->
-        <div class="col-md-3 filter-option" id="scoreFilter" style="display:none;">
+        <div class="col-md-3 filter-option" id="ratingFilter" style="display:none;">
           <label for="ratingSelect" class="form-label">IMDB Rating</label>
           <select id="ratingSelect" class="form-select">
             <option value="">Select...</option>

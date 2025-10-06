@@ -18,13 +18,16 @@ document.addEventListener("DOMContentLoaded", () => {
 //The fetch movies function
 async function fetchMovies(url, limit = 25) {
   try {
+    console.log("Fetching Movies from:", url);
     let movies = [];
 
     let page = 1;
     while (movies.length < limit) {
       const res = await fetch(`${url}&page=${page}`);
+      if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
       const data = await res.json();
 
+      if (!data.results) break;
       movies = [...movies, ...data.results];
       page++;
     }
@@ -103,7 +106,7 @@ filterType.addEventListener("change", () => {
 
   if (filterType.value === "all") {
     fetchMovies(
-      `${BASE_URL}/movie/popular?api+key=${API_KEY}&language=en-US`,
+      `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US`,
       25
     );
   }
@@ -114,7 +117,7 @@ async function loadGenres() {
   const res = await fetch(
     `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
   );
-  const data = await ReadableByteStreamController.json();
+  const data = await res.json();
   const genreSelect = document.getElementById("genreSelect");
   data.genres.forEach((genre) => {
     const option = document.createElement("option");

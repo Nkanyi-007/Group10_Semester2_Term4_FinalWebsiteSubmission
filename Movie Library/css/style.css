@@ -14,7 +14,7 @@ body {
 header.navbar {
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
-  padding: 0.8rem, 2rem;
+  padding: 0.8rem 2rem;
   border-radius: 12px;
   max-width: 900px;
   margin: 1rem auto;
@@ -63,6 +63,12 @@ header .nav-link.active {
   margin-top: 4rem;
 }
 
+.filters,
+.filter-menu {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+
 .filters button {
   background: none;
   border: none;
@@ -74,9 +80,14 @@ header .nav-link.active {
   margin-top: 1rem;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
 }
 .filter-menu label {
   font-weight: bold;
+}
+
+main.container{
+  margin-top: 1rem;
 }
 
 /*Movie Cards*/
