@@ -65,3 +65,18 @@ font-weight: 400;
 font-size: 22px;
 color: #ffffff;
 }
+
+.popularMovies{
+  height: 120vh;
+  background-color: #202126;
+}
+
+.popularMoviesSection{
+  align-items: center;
+     text-align: center;
+    font-family: "Orbitron", sans-serif;
+    font-weight: 900;
+    color: #8c1b2f;
+    font-size: 48px;
+    
+}
