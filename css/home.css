@@ -32,9 +32,36 @@
   mix-blend-mode: soft-light;
   pointer-events: none;
 }   
-    
+
 .profile{
   background: none;
   border: none;
 }
 
+#movieHeader{
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+}
+
+#carouselExample {
+  
+  width: 55%;
+  height: 55%;
+}
+.movie-title{
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: #8c1b2f;
+}
+
+.movie-rating,
+.release-date,
+.movie-overview{
+font-family: "ff-good-headline-web-pro-ext", sans-serif;
+font-weight: 400;
+font-size: 22px;
+color: #ffffff;
+}

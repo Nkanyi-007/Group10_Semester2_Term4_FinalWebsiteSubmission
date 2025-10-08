@@ -88,5 +88,42 @@ function displayMovies(moviesArray) {
         }
     };
 
+
+    
+let data = await fetch(url, options)
+        .then((response)=> response.json())
+        .then((result)=> {return result})
+        .catch((error)=> console.log(error));
+
+
+    console.log(data)
+
+
+const movies = data.results.map(apiMovie => {
+            const imagePath = apiMovie.poster_path;
+            const image = imagePath ? `${IMAGE_BASE_URL}${imagePath}` : 'https://via.placeholder.com/500x750?text=No+Image'; 
+           
+            return new Movie(
+                image,
+                apiMovie.title,
+                apiMovie.release_date,
+                apiMovie.vote_average,
+                apiMovie.overview
+            );
+        });
+       
+       
+
+
+const limitedMovies = movies.slice(0, 3);
+        displayMovies(limitedMovies);
+        //everything passes through newly created arrays, and then display it
+
+ 
+
+
 }();
+
+
+
 
