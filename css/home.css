@@ -21,6 +21,15 @@
     border-width: 6px;
 }
 
+.navBarContainer a:hover {
+    color: #F26D3D;
+}
+
+.active-link {
+    color: #F26D3D;
+
+}
+
 .homeHeader.noise::before {
     content: '';
     position: absolute;
@@ -36,7 +45,11 @@
 .profile {
     background: none;
     border: none;
+    color: #8c1b2f;
+    filter: invert(14%) sepia(73%) saturate(3190%) hue-rotate(335deg) brightness(86%) contrast(92%);
 }
+
+
 
 #movieHeader {
     display: flex;

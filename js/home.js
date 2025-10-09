@@ -30,7 +30,7 @@ function displayMovies(moviesArray) {
         //index - only first item in array get active
 
         return (
-        `
+            `
         <div class="carousel-item ${active}">
         <div class="row align-items-center">
 
@@ -73,10 +73,15 @@ function displayMovies(moviesArray) {
 
     const firstDayOfPreviousMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1)
         .toISOString().split('T')[0];
-
+//getting first day of last month (september)
 
     const lastDayOfPreviousMonth = new Date(now.getFullYear(), now.getMonth(), 0)
         .toISOString().split('T')[0];
+//getFullYear - gets current year - 2025
+//getmonth - gets current month
+//0 day of month asks for the day before the 1st - last day of previous month
+//getting last day of last month (september)
+//toISOstring returns date in yyyy-mm-dd
 
     const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&language=en-US&sort_by=primary_release_date.desc&primary_release_date.gte=${firstDayOfPreviousMonth}&primary_release_date.lte=${lastDayOfPreviousMonth}`;
     const options = {
@@ -89,37 +94,38 @@ function displayMovies(moviesArray) {
     };
 
 
-    
-let data = await fetch(url, options)
-        .then((response)=> response.json())
-        .then((result)=> {return result})
-        .catch((error)=> console.log(error));
+
+    let data = await fetch(url, options)
+        .then((response) => response.json())
+        .then((result) => { return result })
+        .catch((error) => console.log(error));
 
 
     console.log(data)
 
 
-const movies = data.results.map(apiMovie => {
-            const imagePath = apiMovie.poster_path;
-            const image = imagePath ? `${IMAGE_BASE_URL}${imagePath}` : 'https://via.placeholder.com/500x750?text=No+Image'; 
-           
-            return new Movie(
-                image,
-                apiMovie.title,
-                apiMovie.release_date,
-                apiMovie.vote_average,
-                apiMovie.overview
-            );
-        });
-       
-       
+    const movies = data.results.map(apiMovie => {
+        const imagePath = apiMovie.poster_path;
+        const image = imagePath ? `${IMAGE_BASE_URL}${imagePath}` : 'https://via.placeholder.com/500x750?text=No+Image';
+
+        return new Movie(
+            image,
+            apiMovie.title,
+            apiMovie.release_date,
+            apiMovie.vote_average,
+            apiMovie.overview
+        );
+    });
 
 
-const limitedMovies = movies.slice(0, 3);
-        displayMovies(limitedMovies);
-        //everything passes through newly created arrays, and then display it
 
- 
+
+    const limitedMovies = movies.slice(0, 3); //0 starts index, and it goes up to 3 but doesn't incl it (0,1,2 = 3 movies displayed)
+    displayMovies(limitedMovies);
+    //everything passes through newly created arrays, and then display it
+    //have to display the movies that's been sliced/reduced
+
+
 
 
 }();
