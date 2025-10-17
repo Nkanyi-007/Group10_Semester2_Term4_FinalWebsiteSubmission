@@ -1,8 +1,8 @@
 .homeHeader {
-    height: 100vh;
+    
 
-    background-image: url(../assets/img/DV\ background\ log\ in_sign\ up.png);
-       background-repeat: no-repeat;
+    background-image: url(../assets/img/p1xie\ flix\ background.png);
+background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
 
@@ -85,10 +85,11 @@
     color: #ffffff;
 }
 
-.popularMovies {
+/* .popularMovies {
+    background: url(../assets/img/DV\ background\ popular.png);
     height: 120vh;
     ;
-}
+} */
 
 .popularMoviesSection {
     align-items: center;
