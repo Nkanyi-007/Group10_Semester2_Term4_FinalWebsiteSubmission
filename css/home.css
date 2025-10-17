@@ -18,9 +18,10 @@
 
 
 .navBarContainer {
-    background-color: #202126;
+    background-color: #202126c4;
     border-bottom: #ffffffe3 solid;
     border-width: 6px;
+    border-radius: 8px;
 }
 
 .navBarContainer a:hover {

@@ -178,6 +178,7 @@ function displayMovies(moviesArray) {
                 <p class="release-date"><strong>Released:</strong> ${movie.releaseDate}</p>
                 <p class="movie-overview">${movie.overview}</p>
             </div>
+            
 
 
         </div>
