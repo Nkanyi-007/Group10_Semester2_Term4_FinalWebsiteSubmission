@@ -7,7 +7,7 @@ const options = {
     method: 'GET',
     headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${HOME_API_KEY}`
+        Authorization: `Bearer ${HOME_API_TOKEN}`
     }
 };
 
@@ -76,16 +76,32 @@ function homeDisplayPopularMovies(homeMoviesArray) {
 
 
     homePopularContainer.innerHTML = homeMoviesArray.map(movie => `
-            <div class="card" style="width: 18rem;">
+            <div class="homePopularMovieCard" style="width: 18rem;">
   <img src="${movie.image}" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">${movie.title}</h5>
-    <p class="card-text">${movie.overview}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h5 class="home-popular-card-title">${movie.title}</h5>
+    <p class="home-popular-card-text">${movie.popularity}</p>
+    <a href="#" class="home-card-button btn">Go somewhere</a>
   </div>
 </div> `
-    );
+    ).join('');
 
+}
+
+function homeDisplayTopRatedMovies(homeMoviesArray) {
+    const homeTopRatedContainer = document.getElementById('homeTopRatedMoviesGrid');
+
+    homeTopRatedContainer.innerHTML = homeMoviesArray.map(movie =>`
+        <div class="homeTopRatedMovieCard" style="width: 18rem;">
+  <img src="${movie.image}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="home-top-rated-card-title">${movie.title}</h5>
+    <p class="home-top-rated-card-text">${movie.rating}</p>
+    <a href="#" class="home-card-button btn">Go somewhere</a>
+  </div>
+</div> 
+        
+        `).join('');
 }
 
 
@@ -110,20 +126,58 @@ async function homeDisplayUpcomingMovies() {
                 apiMovie.title,
                 apiMovie.release_date,
                 apiMovie.vote_average,
-                apiMovie.overview
+                apiMovie.overview,
+                apiMovie.popularity
             );
         });
 
         console.log("Processed Movies:", movies);
 
 
-        const limitedMovies = movies.slice(0, 3); //0 starts index, and it goes up to 3 but doesn't incl it (0,1,2 = 3 movies displayed)
+        const limitedMovies = movies.slice(0, 4); //0 starts index, and it goes up to 3 but doesn't incl it (0,1,2 = 3 movies displayed)
         homeDisplayUpcoming(limitedMovies);
     }
 }
 
 async function homeDisplayFetchPopularMovies() {
     const url = `${HOME_BASE_URL}/movie/popular?language=en-US&page=1`
+
+    let data = await fetch(url, options)
+        .then((response) => response.json())
+        .then((result) => { return result })
+        .catch((error) => console.log(error));
+
+    if (data && data.results) {
+        console.log("Fetched Data:", data);
+
+
+        const movies = data.results.map(apiMovie => {
+            const imagePath = apiMovie.poster_path;
+            const image = imagePath ? `${HOME_IMG_BASE_URL}${imagePath}` : 'https://via.placeholder.com/500x750?text=No+Image';
+
+            return new homeMovie(
+                image,
+                apiMovie.title,
+                apiMovie.release_date,
+                apiMovie.vote_average,
+                apiMovie.overview,
+                apiMovie.popularity
+            );
+        });
+
+        console.log("Processed Movies:", movies);
+
+
+        const limitedMovies = movies.slice(0, 8); 
+        homeDisplayPopularMovies(limitedMovies);
+        //everything passes through newly created arrays, and then display it
+        //have to display the movies that's been sliced/reduced
+    }
+}
+
+
+async function homeDisplayFetchTopRatedMovies() {
+    const url = `${HOME_BASE_URL}/movie/top_rated?language=en-US&page=1`
 
     let data = await fetch(url, options)
         .then((response) => response.json())
@@ -151,17 +205,19 @@ async function homeDisplayFetchPopularMovies() {
 
 
         const limitedMovies = movies.slice(0, 8); 
-        homeDisplayPopularMovies(limitedMovies);
+        homeDisplayTopRatedMovies(limitedMovies);
         //everything passes through newly created arrays, and then display it
         //have to display the movies that's been sliced/reduced
     }
 }
 
 
+
 async function main() {
     await Promise.all([
         homeDisplayUpcomingMovies(),
-        homeDisplayFetchPopularMovies()
+        homeDisplayFetchPopularMovies(),
+        homeDisplayFetchTopRatedMovies()
     ]);
     console.log("All home page sections loaded!");
 
