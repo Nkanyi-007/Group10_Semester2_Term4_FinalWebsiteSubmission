@@ -32,21 +32,18 @@ button.profile{
   border: none;
   cursor: pointer;
 }
-button.profile i.fa-solid.fa-user {
-  /* --- This makes the icon visible --- */
+a.profile i.fa-solid.fa-user {
+  
   display: inline-block !important; 
-  font-size: 24px !important; /* Set your desired size */
+  font-size: 24px !important; 
   font-style: normal !important; 
 
-  /* --- This applies your custom color --- */
+  
   color: #8c1b2f;
   
 }
 
-/* .profile .btn .fi-ts-user{
-  color: #8c1b2f;
-  font-size: 24px;
-} */
+
 
 .navBarContainer {
     background-color: #202126c4;
@@ -361,4 +358,12 @@ button.profile i.fa-solid.fa-user {
 
 .homePopularSection{
 font-size: 32px;
+}
+
+.signUpPage{
+  background-image: url(../assets/img/DV\ background\ log\ in_sign\ up.png);
+  height: 100vh;
+    background-repeat: no-repeat; 
+  background-position: center center;
+  background-size: cover;
 }
