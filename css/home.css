@@ -27,17 +27,18 @@ background-repeat: no-repeat;
     color: #8c1b2f;
 
 }
+
 button.profile{
   background: none;
   border: none;
   cursor: pointer;
 }
+
 a.profile i.fa-solid.fa-user {
   
   display: inline-block !important; 
   font-size: 24px !important; 
   font-style: normal !important; 
-
   z-index: 100; position: relative;
   color: #8c1b2f;
   
