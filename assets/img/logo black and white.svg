@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 304.97 215.41">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-linecap: round;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1, .cls-3 {
+        fill: none;
+      }
+
+      .cls-1, .cls-3, .cls-4 {
+        stroke-width: 2px;
+      }
+
+      .cls-2 {
+        fill: #202126;
+        stroke-width: 4px;
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <rect class="cls-2" x="2" y="2" width="300.97" height="211.41" rx="12" ry="12"/>
+    <circle class="cls-3" cx="89.82" cy="100.36" r="7.35" transform="translate(-37.21 145.13) rotate(-67.59)"/>
+    <circle class="cls-3" cx="94.57" cy="158.89" r="7.35"/>
+    <path class="cls-3" d="M97.86,44.05c.14,4.03-3.06,7.46-7.09,7.6-4.03.14-7.46-3.06-7.6-7.09s3.06-7.46,7.09-7.6,7.46,3.06,7.6,7.09Z"/>
+    <circle class="cls-3" cx="185.14" cy="164.98" r="6.97"/>
+    <circle class="cls-3" cx="132.02" cy="183.6" r="6.97" transform="translate(-.35 .25) rotate(-.11)"/>
+    <circle class="cls-3" cx="133.44" cy="26.65" r="6.97" transform="translate(83.84 153.37) rotate(-79.92)"/>
+    <circle class="cls-3" cx="180.68" cy="38.94" r="6.97"/>
+    <path class="cls-3" d="M126.48,26.9c-11.39,3.43-22.78,6.86-34.17,10.3"/>
+    <path class="cls-3" d="M90.77,51.66c-.4,13.79-.81,27.57-1.21,41.36"/>
+    <path class="cls-3" d="M90.08,107.71c.23,15.41.42,29.51.65,44.92"/>
+    <path class="cls-3" d="M125.05,183.85c-8.55-6.47-17.11-12.94-25.66-19.41"/>
+    <path class="cls-3" d="M138.91,184.6c12.71-5.96,26.6-11.96,39.31-17.92"/>
+    <path class="cls-3" d="M191.14,160.88c17.86-18.45,35.29-39.28,53.14-57.73"/>
+    <path class="cls-3" d="M244.28,103.15c-18.49-18.89-39.3-41.49-57.79-60.38"/>
+    <path class="cls-3" d="M140.19,24.89c11.14,3.84,22.28,7.67,33.43,11.51"/>
+    <path class="cls-3" d="M244.28,103.15c-19.59-11.1-40.12-23.05-59.71-34.15"/>
+    <path class="cls-1" d="M244.28,103.15c-16.9,4.3-39.54,10.33-56.43,14.63"/>
+    <path class="cls-3" d="M96.99,47.76c8.64,12.97,18.12,25.8,26.75,38.78"/>
+    <path class="cls-3" d="M119.86,94.34c-6.8,1.55-15.96,2.26-22.77,3.81"/>
+    <path class="cls-3" d="M100.32,154.33c5.77-4.85,13.01-10.93,18.78-15.78"/>
+    <path class="cls-3" d="M134.39,176.5c4.68-11.35,9.25-25.83,13.93-37.17,3.59-.73,9.23-1.53,12.82-2.26"/>
+    <path class="cls-3" d="M133.71,34.16c.19,5.08.44,11.73.64,16.8,5.66,1.87,12.48,4.14,18.14,6.01"/>
+    <path class="cls-3" d="M182.39,158.58c-4.12-4.45-10.76-14.2-14.73-19.16"/>
+    <path class="cls-3" d="M180.19,45.93c-4.31,2.33-13.26,8.35-17.56,10.68"/>
+    <circle class="cls-3" cx="124.37" cy="91.76" r="4.8" transform="translate(7.63 193.06) rotate(-77.37)"/>
+    <circle class="cls-3" cx="123.79" cy="135.43" r="4.8" transform="translate(-35.43 226.61) rotate(-77.37)"/>
+    <circle class="cls-3" cx="165.52" cy="135.12" r="4.8" transform="translate(-2.53 267.09) rotate(-77.37)"/>
+    <circle class="cls-3" cx="157.96" cy="57.75" r="4.8" transform="translate(67.06 199.26) rotate(-77.37)"/>
+    <circle class="cls-4" cx="180.05" cy="67.66" r="4.48" transform="translate(4.9 147.13) rotate(-45)"/>
+    <circle class="cls-4" cx="183.31" cy="119.51" r="4.48" transform="translate(-30.81 164.62) rotate(-45)"/>
+  </g>
+</svg>

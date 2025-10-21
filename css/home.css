@@ -1,0 +1,115 @@
+.homeHeader {
+    height: 100vh;
+
+    background:
+        linear-gradient(to bottom, #202126 10%, #114040, #8c1b2f);
+
+
+
+    align-items: center;
+    text-align: center;
+    font-family: "Orbitron", sans-serif;
+    font-weight: 900;
+    color: #8c1b2f;
+
+}
+
+
+.navBarContainer {
+    background-color: #20212600;
+    border-bottom: #ffffffe3 solid;
+    border-width: 6px;
+}
+
+.navBarContainer a:hover {
+    color: #F26D3D;
+}
+
+.active-link {
+    color: #F26D3D;
+
+}
+
+.homeHeader.noise::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cfilter id='noise' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeBlend mode='screen'/%3E%3C/filter%3E%3Crect width='500' height='500' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+}
+
+.profile {
+    background: none;
+    border: none;
+    color: #8c1b2f;
+    filter: invert(14%) sepia(73%) saturate(3190%) hue-rotate(335deg) brightness(86%) contrast(92%);
+}
+
+
+
+#movieHeader {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+#carouselExample {
+
+    width: 55%;
+    height: 55%;
+}
+
+.movie-title {
+    font-family: "Orbitron", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #8c1b2f;
+}
+
+.movie-rating,
+.release-date,
+.movie-overview {
+    font-family: "ff-good-headline-web-pro-ext", sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: #ffffff;
+}
+
+.popularMovies {
+    height: 120vh;
+    background-color: #202126;
+}
+
+.popularMoviesSection {
+    align-items: center;
+    text-align: center;
+    font-family: "Orbitron", sans-serif;
+    font-weight: 900;
+    color: #8c1b2f;
+    font-size: 48px;
+
+}
+
+.pixieFooter {
+    height: 40vh;
+    background:
+        linear-gradient(to left, #114040 60%, #E8E9F3);
+    
+}
+
+.pixieFooter.noise::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cfilter id='noise' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeBlend mode='screen'/%3E%3C/filter%3E%3Crect width='500' height='500' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode:darken;
+    pointer-events: none;
+}

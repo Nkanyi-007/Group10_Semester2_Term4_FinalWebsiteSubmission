@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Kyle Wiid 251231">
+    <meta name="keywords" content="">
+    
+    <title>Watchlist</title>
+    
+    <link rel="stylesheet" href="../css/style.css">
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    
+    
+   
+</head>
+<body>
+
+  <!-- Navbar----------------------------------------------------------------------------------------------------------- -->
+
+ <header class="navbar navbar-expand-lg px-3">
+        <div class = "d-flex align-items-center w-100 justify-content-between">
+            <a class ="navbar-brand" href="#">
+        <img src="assets/logo.jpeg" alt="Logo" class="logo" />
+        </a>
+        <nav class = "navbar-nav flex-row">
+          <a class = "nav-link" href="#">Home</a>
+          <a class="nav-link" href="MovieLibrary.html">Movie Library</a>
+          <a class="nav-link active" href="javascript:location.reload()">Watch List</a>
+        </nav>
+
+        <form class="d-flex mx-3" role="search">
+            <input
+            id="searchInput"
+            class="form-control me-2"
+            type="search"
+            placeholder="Search movies..."
+            aria-label="Search"
+         />
+      <button id="searchBtn" class="btn btn-outline-dark" type="button">
+        🔍
+      </button>
+      </form>
+      <div class="profile ms-3">👤</div>
+    </header>
+
+
+<!-- Movie Grid----------------------------------------------------------------------------------------------------------- -->
+
+
+<!-- 
+    <div id="movieCards" class="row mt-4"></div>
+     -->
+   <main class="container container-fluid mt-5">
+     <h2 class="text-center mb-4">Your Watchlist</h2> 
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="watchlistGrid">
+        
+    </div>
+</main>
+
+
+
+
+
+
+<!-- Footer---------------------------------------------------------------------------------------------------------- -->
+
+ <footer class="footer mt-5 text-light">
+      <div class="container text-center">
+        
+        <div class="footer-links d-flex justify-content-center flex-wrap mb-3">
+          <a href="home.html" class="footer-link mx-3">Home</a>
+          <a href="../MovieLibrary.html" class="footer-link mx-3">Movie Library</a>
+          <a href="watchlist.html" class="footer-link mx-3">Watchlist</a>
+          <a href="https://www.openwindow.co.za/" target="_blank" class="footer-link mx-3">Open Window</a>
+        </div>
+
+        <div class="footer-logo mb-3">
+          <img src="assets/logo.jpeg" alt="Logo" class="footer-logo-img" />
+          <h5 class="mt-2">P1xie flix</h5>
+        </div>
+
+        <div class="footer-social d-flex justify-content-center gap-3">
+          <a href="https://www.facebook.com/theopenwindow/" target="_blank" class="social-link">Facebook</a>
+          <a href="https://x.com/open_window_" target="_blank" class="social-link">X</a>
+          <a href="https://www.instagram.com/openwindowinstitute/?hl=en" target="_blank" class="social-link">Instagram</a>
+        </div>
+
+      </div>
+    </footer>
+
+
+<!-- Scripts----------------------------------------------------------------------------------------------------------- -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    
+    <script src="../js/Script.js" ></script>
+</body>
+</html>  
+
