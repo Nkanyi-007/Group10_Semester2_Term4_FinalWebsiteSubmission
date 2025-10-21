@@ -1,3 +1,5 @@
+
+//Rhichelle's backend
 const HOME_API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MGI5ZjllOWI0YmRiMDNhYWZkYjFmM2FhM2YzYTFjNyIsIm5iZiI6MTc1NzY5MTA5MS4wNiwic3ViIjoiNjhjNDNjZDMyYWE0OTJlZWMxZDI2NTRkIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.3pBCgQ0z1aqjr_XqG-7ae9DlEGMCPykT5w9S1qh4pZw";
 const HOME_API_KEY = "60b9f9e9b4bdb03aafdb1f3aa3f3a1c7";
 const HOME_BASE_URL = "https://api.themoviedb.org/3";
@@ -97,8 +99,9 @@ function homeDisplayPopularMovies(homeMoviesArray) {
 function homeDisplayTopRatedMovies(homeMoviesArray) {
     const homeTopRatedContainer = document.getElementById('homeTopRatedMoviesGrid');
 
-    homeTopRatedContainer.innerHTML = homeMoviesArray.map(movie =>`
-        <div class="homeTopRatedMovieCard" style="width: 18rem;">
+    homeTopRatedContainer.innerHTML = homeMoviesArray.map(movie => `
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+        <div class="card homeTopRatedMovieCard h-100" style="width: 18rem;">
   <img src="${movie.image}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="home-top-rated-card-title">${movie.title}</h5>
@@ -107,6 +110,7 @@ function homeDisplayTopRatedMovies(homeMoviesArray) {
     <a href="#" class="home-card-button btn">Watchlist</a>
   </div>
 </div> 
+</div>
         
         `).join('');
 }
@@ -175,7 +179,7 @@ async function homeDisplayFetchPopularMovies() {
         console.log("Processed Movies:", movies);
 
 
-        const limitedMovies = movies.slice(0, 8); 
+        const limitedMovies = movies.slice(0, 8);
         homeDisplayPopularMovies(limitedMovies);
         //everything passes through newly created arrays, and then display it
         //have to display the movies that's been sliced/reduced
@@ -211,7 +215,7 @@ async function homeDisplayFetchTopRatedMovies() {
         console.log("Processed Movies:", movies);
 
 
-        const limitedMovies = movies.slice(0, 8); 
+        const limitedMovies = movies.slice(0, 8);
         homeDisplayTopRatedMovies(limitedMovies);
         //everything passes through newly created arrays, and then display it
         //have to display the movies that's been sliced/reduced
@@ -231,3 +235,4 @@ async function main() {
 }
 
 main();
+//Rhichelle's backend
