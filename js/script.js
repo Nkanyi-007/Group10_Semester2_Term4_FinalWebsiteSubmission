@@ -31,7 +31,7 @@ function homeDisplayUpcoming(homeMoviesArray) {
 
     homeUpcomingContainer.innerHTML = '';
 
-    let homeUpcomingSlider = `<div id="home-carousel-auto" class="carousel slide" data-bs-ride="carousel">
+    let homeUpcomingSlider = `<div id="home-carousel-auto" class="carousel slide" carousel slide="carousel">
   <div class="carousel-inner">`;
 
 
@@ -46,16 +46,19 @@ function homeDisplayUpcoming(homeMoviesArray) {
             <div class="carousel-item ${active}">
       <img src="${movie.image}" class="d-block w-100" >
 
-      <div class="col-md-7 text-start p-4">
-                <h2 class="movie-title">${movie.title}</h2>
-                <p class="movie-rating"><strong>Rating:</strong> ${movie.rating.toFixed(1)} </p>
-                <p class="release-date"><strong>Released:</strong> ${movie.releaseDate}</p>
-                <p class="movie-overview">${movie.overview}</p>
-            </div>
+      
         </div>
     </div>`)
 
     }).join('');
+
+    //  <div class="col-md-7 text-start p-4">
+    //             <h2 class="movie-title">${movie.title}</h2>
+    //             <p class="movie-rating"><strong>Rating:</strong> ${movie.rating.toFixed(1)} </p>
+    //             <p class="release-date"><strong>Released:</strong> ${movie.releaseDate}</p>
+    //             <p class="movie-overview">${movie.overview}</p>
+    //         </div>
+
 
     homeUpcomingSlider += `</div>
   <button class="carousel-control-prev" type="button" data-bs-target="#home-carousel-auto" data-bs-slide="prev">
@@ -76,14 +79,17 @@ function homeDisplayPopularMovies(homeMoviesArray) {
 
 
     homePopularContainer.innerHTML = homeMoviesArray.map(movie => `
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
             <div class="homePopularMovieCard" style="width: 18rem;">
   <img src="${movie.image}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="home-popular-card-title">${movie.title}</h5>
     <p class="home-popular-card-text">${movie.popularity}</p>
-    <a href="#" class="home-card-button btn">Go somewhere</a>
+    <a href="#" class="home-card-button btn">Details</a>
+    <a href="#" class="home-card-button btn">Watchlist</a>
   </div>
-</div> `
+</div> 
+</div>`
     ).join('');
 
 }
@@ -97,7 +103,8 @@ function homeDisplayTopRatedMovies(homeMoviesArray) {
   <div class="card-body">
     <h5 class="home-top-rated-card-title">${movie.title}</h5>
     <p class="home-top-rated-card-text">${movie.rating}</p>
-    <a href="#" class="home-card-button btn">Go somewhere</a>
+    <a href="#" class="home-card-button btn">Details</a>
+    <a href="#" class="home-card-button btn">Watchlist</a>
   </div>
 </div> 
         

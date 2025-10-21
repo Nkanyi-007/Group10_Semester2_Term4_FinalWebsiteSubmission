@@ -12,20 +12,16 @@ body{
 
 .homeHeader {
    
-
-    /* background-image: url(../assets/img/p1xie\ flix\ background.png);
-background-repeat: no-repeat;
-  background-size: cover;
-  overflow: hidden; */
-
-
-
     align-items: center;
     text-align: center;
     font-family: "Orbitron", sans-serif;
     font-weight: 900;
     color: #8c1b2f;
 
+}
+#home-carousel-auto img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover; 
 }
 
 button.profile{
@@ -43,6 +39,13 @@ a.profile i.fa-solid.fa-user {
   color: #8c1b2f;
   
 }
+i.fa-solid.fa-magnifying-glass{
+  display: inline-block !important; 
+  font-size: 24px !important; 
+  font-style: normal !important; 
+  z-index: 100; position: relative;
+  color: #8c1b2f;
+}
 
 
 
@@ -54,6 +57,7 @@ a.profile i.fa-solid.fa-user {
 }
 
 .navBarContainer a:hover {
+  transform: scale(1.1);
     color: #F26D3D;
 }
 
@@ -83,7 +87,7 @@ a.profile i.fa-solid.fa-user {
 
 
 
-#movieHeader {
+#homeMovieHeader {
     display: flex;
     flex-direction: column;
 
@@ -91,10 +95,11 @@ a.profile i.fa-solid.fa-user {
 }
 
 #home-carousel-auto {
-
-    width: 55%;
-    height: 55%;
+    
+    width: 70%;
+    height: 70%;
 }
+
 
 .movie-title {
     font-family: "Orbitron", sans-serif;
@@ -114,11 +119,7 @@ a.profile i.fa-solid.fa-user {
     color: #ffffff;
 }
 
-/* .popularMovies {
-    background: url(../assets/img/DV\ background\ popular.png);
-    height: 120vh;
-    ;
-} */
+
 
 .popularMoviesSection {
     align-items: center;
@@ -131,11 +132,86 @@ a.profile i.fa-solid.fa-user {
 }
 
 .pixieFooter {
-    height: 40vh;
-    background:
-        linear-gradient(to left, #114040 60%, #E8E9F3);
+   
+    background-color: #202126;
+    padding: 2.5rem 1rem;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
     
 }
+.footer-links {
+  
+  margin-bottom: 1rem;
+  font-family: "ff-good-headline-web-pro-ext", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-link {
+  color: #eee;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 0.5rem ;
+  /* display: block; */
+}
+
+.footer-link:hover {
+  color: #F26D3D;
+  transform: scale(1.1);
+}
+
+/* .footer-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: left;
+} */
+
+.footer-logo-img {
+  /* display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: left; */
+
+  height: 100px;
+  
+  box-shadow: 0 0 10px rgba(232, 233, 243, .5);
+}
+
+.footer-social img {
+  width: 40px;
+  height: 40px;
+  
+}
+
+
+
+.social-link:hover {
+
+  transform: translateY(-2px);
+}
+
+.footer-copy {
+  font-family: "ff-good-headline-web-pro-ext", sans-serif;
+  font-weight:600;
+  letter-spacing: 1px;
+  font-size: 14px;
+  color: #ccc;
+  margin-top: 1rem;
+}
+
+.footer {
+  animation: fadeInUp 1s ease forwards;
+}
+.footer-slogan{
+ 
+  font-family: "ff-good-headline-web-pro-ext", sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    
+}
+
 
 /* .pixieFooter.noise::before {
     content: '';
@@ -276,12 +352,12 @@ a.profile i.fa-solid.fa-user {
   justify-content: flex-start;
 }
 
-.homePopularMovieCard,
+.homePopularMovieCard:hover,
 .homeTopRatedMovieCard:hover {
   transform: scale(1.05);
 }
 
-.homePopularMovieCard,
+.homePopularMovieCard img,
 .homeTopRatedMovieCard img {
   border-radius: 8px;
   width: 100%;
@@ -300,7 +376,8 @@ a.profile i.fa-solid.fa-user {
 
 .home-popular-card-title,
 .homePopularSection,
-.home-top-rated-card-title{
+.home-top-rated-card-title,
+.homeTopRatedSection{
   align-items: center;
     text-align: center;
     font-family: "Orbitron", sans-serif;
@@ -324,12 +401,13 @@ a.profile i.fa-solid.fa-user {
   z-index: 10;
   font-family: "ff-good-headline-web-pro-ext", sans-serif;
     font-weight: 600;
-    font-size: 32px;
-  width: 200px;
-  height: 60px;
+
+    font-size: 20px;
+    padding: 14px 18px;
+  
   border: 1px solid rgba(32, 33, 38, 0.197);
   border-radius: 8px;
-  background-color: rgba(32, 33, 38, 0.215);
+  background-color: rgba(32, 33, 38, 0.137);
   color: #202126;
   
   letter-spacing: 1px;
@@ -342,22 +420,29 @@ a.profile i.fa-solid.fa-user {
 /* rgba(242, 109, 61, 0.677) */
 .home-card-button::before {
   position: absolute;
-  top: 15px;
-  left: 50px;
+
+  top: 50%;
+  left: 50%;
+
   z-index: -1;
-  width: 100px;
-  height: 30px;
+  transform: translate(-50%, -50%) scale(.8);
+  transition: transform 0.5s ease;
   border-radius: 50px;
-  background-color: #F26D3D;
+  background-color: #8c1b2f;
   filter: blur(10px);
   content: "";
-  transition: .5s;
+  
+
+  width: 100px;
+  height: 50px;
 }
 .home-card-button:hover::before {
-  transform: scale(2);
+  transform: translate(-50%, -50%) scale(1.3);
+  
 }
 
-.homePopularSection{
+.homePopularSection,
+.homeTopRatedSection{
 font-size: 32px;
 }
 
