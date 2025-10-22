@@ -1,0 +1,149 @@
+<!DOCTYPE html> <!--Document type-->
+<html lang="en"> <!--HTML declaration-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-compatible" content="IE-edge">
+    <meta name="viewport" content="width-device-width, initial-scale-1.0">
+
+    <meta name="author" content="Lara Van Jaarsveld">
+    <meta name="keywords" content="Lara Van Jaarsveld">
+    <title>Movie Library </title>
+
+
+    <!--fonts, css and bootstrap-->
+     <link rel="stylesheet" type="text/css" href="https://demo.plantpot.works/assets/css/normalize.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.typekit.net/hux1ckj.css">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    
+   
+    <link rel="stylesheet" href="https://use.typekit.net/opg3wle.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+
+</head>
+
+<body>
+     
+
+
+<header class="header">
+
+            <nav class="navbar navbar-expand-lg p-2" id="navBar">
+                <div class="navBarContainer container-fluid justify-content-center">
+
+                    <div class="navBar collapse navbar-collapse flex-row" id="navbarSupportedContent">
+                        <a class="navBarLogo navbar-brand mx-3" href="../home.html"><img
+                                src="../assets/img/logo black and white.svg" height="80px" width="100px"> P1xie Flix </a>
+
+                        <ul class="navBarLinks navbar-nav m-auto ">
+                            <li class="navBarrHome nav-item mx-3">
+                                <a class="navBarHome nav-link " href="../index.html">Home</a>
+                            </li>
+
+                            <li class="navBarMovieLLibrary nav-item mx-3">
+                                <a class="navBarMovieLibrary active-link nav-link" href="pages/MovieLibrary.html">Movie Library</a>
+                            </li>
+
+                            <li class="navBarWatchlist nav-item mx-3">
+                                <a class="navBarWatchlist nav-link" href="pages/MovieWatchlist.html">Watchlist</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                            <button class="searchButton btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </form>
+                      
+                                <a href="../pages/signup.html" class="profile">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </nav>
+</header>
+
+    <!--Filters-->
+    <section class="filters container-fluid my-5 text-center">
+      <button id="filterBtn" class="btn btn-primary me-2">Filters</button>
+    </section>
+
+    <div id="filterMenu" class="filter-menu container text-dark bg-light p-3 rounded shadow" style="display:none; max-width:900px;">
+      <div class="row g-3">
+        <div class="col-md-3">
+          <label for="filterType" class="form-label">Filter by:</label>
+          <select id="filterType" class="form-select">
+            <option value="all">All Movies</option>
+            <option value="genre">Genre</option>
+            <option value="year">Year Released</option>
+            <option value="rating">IMDB Rating</option>
+          </select>
+        </div>
+
+        <!--Genre-->
+        <div class="col-md-3 filter-option" id="genreFilter" style="display:none">
+          <label for="genreSelect" class="form-label">Genre</label>
+          <select id="genreSelect" class="form-select">
+            <option value="">Select...</option>
+          </select>
+        </div>
+
+        <!--Year-->
+        <div class="col-md-3 filter-option" id="yearFilter" style="display:none;">
+          <label for="yearSelect" class="form-label">Year</label>
+          <select id="yearSelect" class="form-select">
+            <option value="">Select...</option>
+          </select>
+        </div>
+
+        <!--Rating-->
+        <div class="col-md-3 filter-option" id="ratingFilter" style="display:none;">
+          <label for="ratingSelect" class="form-label">IMDB Rating</label>
+          <select id="ratingSelect" class="form-select">
+            <option value="">Select...</option>
+            <option value="9">9+</option>
+            <option value="8">8+</option>
+            <option value="7">7+</option>
+            <option value="6">6+</option>
+            <option value="5">5+</option>
+            <option value="4">4+</option>
+            <option value="3">3+</option>
+            <option value="2">2+</option>
+            <option value="1">1+</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!--Movie Grid-->
+    <main class="container">
+        <div
+        class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"
+        id="movieGrid"
+        >
+      <!--inject movies here via js-->
+      </div>
+    </main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+
+    <script src="../js/script.js"></script>
+    
+
+</body>
+</html>
