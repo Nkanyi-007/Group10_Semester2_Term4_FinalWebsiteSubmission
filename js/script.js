@@ -247,12 +247,12 @@ main();
 // //Ill admit that maybe my comments weren't specific enough in their explanations, and my async function syntax probably wasn't what you were looking for, but I'm linking my portfolio from Hyperiondev regardless, just to prove that I know what I'm doing.
 // // https://www.hyperiondev.com/portfolio/234891/
 
-
+// Lara's backend integrated with Kyle's
 const API_KEY = "0d4ce6a4966a08401c202627e29b935a";
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMG_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
-const movieGrid = document.getElementById("movieGrid");
+
 const searchBtn = document.getElementById("searchBtn");
 const searchInput = document.getElementById("searchInput");
 
@@ -282,17 +282,15 @@ function removeFromWatchlist(movieId) {
     let list = JSON.parse(localStorage.getItem("watchList")) || [];
     list = list.filter(m => m.id !== movieId);
     localStorage.setItem("watchList", JSON.stringify(list));
-    location.reload(); 
+    location.reload();
 }
 
 
 // --- MOVIE LIBRARY------------------------------------------------------------------------------
-if (movieGrid) {
-    document.addEventListener("DOMContentLoaded", () => {
-        loadMovies(
-            `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
-        );
-    });
+
+const movieGrid = document.getElementById("movieGrid");
+
+
 
     async function loadMovies(url, limit = 25) {
         try {
@@ -306,6 +304,9 @@ if (movieGrid) {
     }
 
     function displayMovies(movies) {
+
+        if(!movieGrid) return;
+
         movieGrid.innerHTML = "";
 
         movies.forEach((movie) => {
@@ -313,41 +314,85 @@ if (movieGrid) {
             col.classList.add("col");
             col.innerHTML = `
                 <div class="movie-card">
-                    <img src="${
-                        movie.poster_path
-                            ? IMG_BASE_URL + movie.poster_path
-                            : "placeholder.jpg"
-                    }" alt="${movie.title}">
+                    <img src="${movie.poster_path
+                    ? IMG_BASE_URL + movie.poster_path
+                    : "placeholder.jpg"
+                }" alt="${movie.title}">
                     <h3>${movie.title}</h3>
                     <div class="d-flex justify-content-center gap-2 mt-2">
-                        <button class="btn btn-sm btn-dark" onclick="goToDetails(${
-                            movie.id
-                        })">Details</button>
+                        <button class="btn btn-sm btn-dark" onclick="goToDetails(${movie.id
+                })">Details</button>
                         <button class="btn btn-sm btn-success" onclick='addToWatchlist(${JSON.stringify(
-                            movie
-                        )})'>Add to Watchlist</button>
+                    movie
+                )})'>Add to Watchlist</button>
                     </div>
                 </div>
             `;
             movieGrid.appendChild(col);
         });
     }
-
-    searchBtn.addEventListener("click", () => {
-        const query = searchInput.value.trim();
-        if (query) {
-            loadMovies(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
-        }
-    });
-
-    const filterBtn = document.getElementById("filterBtn");
-    const filterMenu = document.getElementById("filterMenu");
-    const filterType = document.getElementById("filterType");
-    const genreFilter = document.getElementById("genreFilter");
-    const yearFilter = document.getElementById("yearFilter");
-    const ratingFilter = document.getElementById("ratingFilter");
     
-    if (filterBtn && filterMenu && filterType) {
+    async function loadGenres() {
+        const res = await fetch(
+            `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
+        );
+        const data = await res.json();
+        const genreSelect = document.getElementById("genreSelect");
+        if (genreSelect) {
+            data.genres.forEach((genre) => {
+                const option = document.createElement("option");
+                option.value = genre.id;
+                option.textContent = genre.name;
+                genreSelect.appendChild(option);
+            });
+        }
+    }
+
+
+    document.addEventListener("DOMContentLoaded", () =>{
+
+        const searchBtn = document.getElementById("searchBtn");
+        const searchInput = document.getElementById("searchInput");
+        const filterBtn = document.getElementById("filterBtn");
+        const filterMenu = document.getElementById("filterMenu");
+        const filterType = document.getElementById("filterType");
+        const genreFilter = document.getElementById("genreFilter");
+        const yearFilter = document.getElementById("yearFilter");
+        const ratingFilter = document.getElementById("ratingFilter");
+        const genreSelect = document.getElementById("genreSelect");
+        const yearSelect = document.getElementById("yearSelect");
+        const ratingSelect = document.getElementById("ratingSelect");
+
+        //loadig cards
+        loadMovies(
+             `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+        );
+
+        loadGenres();
+
+        //dropdown
+        if (yearSelect) {
+        const currentYear = new Date().getFullYear();
+        for (let y = currentYear; y >= currentYear - 50; y--) {
+            const option = document.createElement("option");
+            option.value = y;
+            option.textContent = y;
+            yearSelect.appendChild(option);
+        }
+    }
+
+    //event listener
+    if (searchBtn && searchInput) {
+            searchBtn.addEventListener("click", () => {
+                const query = searchInput.value.trim();
+                if (query) {
+                    loadMovies(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
+                }
+            });
+        }
+
+        //filter menu listeners
+        if (filterBtn && filterMenu && filterType) {
         filterBtn.addEventListener("click", () => {
             filterMenu.style.display =
                 filterMenu.style.display === "none" ? "block" : "none";
@@ -355,7 +400,7 @@ if (movieGrid) {
 
         filterType.addEventListener("change", () => {
             [genreFilter, yearFilter, ratingFilter].forEach(
-                (el) => el && (el.style.display = "none") 
+                (el) => el && (el.style.display = "none")
             );
 
             if (filterType.value === "genre" && genreFilter) genreFilter.style.display = "block";
@@ -368,36 +413,7 @@ if (movieGrid) {
         });
     }
 
-    async function loadGenres() {
-        const res = await fetch(
-            `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
-        );
-        const data = await res.json();
-        const genreSelect = document.getElementById("genreSelect");
-        if (genreSelect) { 
-            data.genres.forEach((genre) => {
-                const option = document.createElement("option");
-                option.value = genre.id;
-                option.textContent = genre.name;
-                genreSelect.appendChild(option);
-            });
-        }
-    }
-    loadGenres();
-
-    const yearSelect = document.getElementById("yearSelect");
-    if (yearSelect) { 
-        const currentYear = new Date().getFullYear();
-        for (let y = currentYear; y >= currentYear - 50; y--) {
-            const option = document.createElement("option");
-            option.value = y;
-            option.textContent = y;
-            yearSelect.appendChild(option);
-        }
-    }
-
-
-    const genreSelect = document.getElementById("genreSelect");
+    //filter action listeners
     if (genreSelect) {
         genreSelect.addEventListener("change", (e) => {
             const genreId = e.target.value;
@@ -409,9 +425,8 @@ if (movieGrid) {
         });
     }
 
-    const yearSelectListener = document.getElementById("yearSelect");
-    if (yearSelectListener) {
-        yearSelectListener.addEventListener("change", (e) => {
+   if (yearSelect) {
+        yearSelect.addEventListener("change", (e) => {
             const year = e.target.value;
             if (year) {
                 loadMovies(
@@ -421,8 +436,8 @@ if (movieGrid) {
         });
     }
 
-    const ratingSelect = document.getElementById("ratingSelect");
-    if (ratingSelect) {
+
+if (ratingSelect) {
         ratingSelect.addEventListener("change", (e) => {
             const rating = e.target.value;
             if (rating) {
@@ -432,7 +447,111 @@ if (movieGrid) {
             }
         });
     }
-}
+
+
+    });
+
+
+    // searchBtn.addEventListener("click", () => {
+    //     const query = searchInput.value.trim();
+    //     if (query) {
+    //         loadMovies(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
+    //     }
+    // });
+
+    // const filterBtn = document.getElementById("filterBtn");
+    // const filterMenu = document.getElementById("filterMenu");
+    // const filterType = document.getElementById("filterType");
+    // const genreFilter = document.getElementById("genreFilter");
+    // const yearFilter = document.getElementById("yearFilter");
+    // const ratingFilter = document.getElementById("ratingFilter");
+
+    // if (filterBtn && filterMenu && filterType) {
+    //     filterBtn.addEventListener("click", () => {
+    //         filterMenu.style.display =
+    //             filterMenu.style.display === "none" ? "block" : "none";
+    //     });
+
+    //     filterType.addEventListener("change", () => {
+    //         [genreFilter, yearFilter, ratingFilter].forEach(
+    //             (el) => el && (el.style.display = "none")
+    //         );
+
+    //         if (filterType.value === "genre" && genreFilter) genreFilter.style.display = "block";
+    //         if (filterType.value === "year" && yearFilter) yearFilter.style.display = "block";
+    //         if (filterType.value === "rating" && ratingFilter) ratingFilter.style.display = "block";
+
+    //         if (filterType.value === "all") {
+    //             loadMovies(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US`);
+    //         }
+    //     });
+    // }
+
+    // async function loadGenres() {
+    //     const res = await fetch(
+    //         `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
+    //     );
+    //     const data = await res.json();
+    //     const genreSelect = document.getElementById("genreSelect");
+    //     if (genreSelect) {
+    //         data.genres.forEach((genre) => {
+    //             const option = document.createElement("option");
+    //             option.value = genre.id;
+    //             option.textContent = genre.name;
+    //             genreSelect.appendChild(option);
+    //         });
+    //     }
+    // }
+    // loadGenres();
+
+    // const yearSelect = document.getElementById("yearSelect");
+    // if (yearSelect) {
+    //     const currentYear = new Date().getFullYear();
+    //     for (let y = currentYear; y >= currentYear - 50; y--) {
+    //         const option = document.createElement("option");
+    //         option.value = y;
+    //         option.textContent = y;
+    //         yearSelect.appendChild(option);
+    //     }
+    // }
+
+
+    // const genreSelect = document.getElementById("genreSelect");
+    // if (genreSelect) {
+    //     genreSelect.addEventListener("change", (e) => {
+    //         const genreId = e.target.value;
+    //         if (genreId) {
+    //             loadMovies(
+    //                 `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`
+    //             );
+    //         }
+    //     });
+    // }
+
+    // const yearSelectListener = document.getElementById("yearSelect");
+    // if (yearSelectListener) {
+    //     yearSelectListener.addEventListener("change", (e) => {
+    //         const year = e.target.value;
+    //         if (year) {
+    //             loadMovies(
+    //                 `${BASE_URL}/discover/movie?api_key=${API_KEY}&primary_release_year=${year}`
+    //             );
+    //         }
+    //     });
+    // }
+
+    // const ratingSelect = document.getElementById("ratingSelect");
+    // if (ratingSelect) {
+    //     ratingSelect.addEventListener("change", (e) => {
+    //         const rating = e.target.value;
+    //         if (rating) {
+    //             loadMovies(
+    //                 `${BASE_URL}/discover/movie?api_key=${API_KEY}&vote_average.gte=${rating}`
+    //             );
+    //         }
+    //     });
+    // }
+
 
 
 
@@ -440,11 +559,11 @@ if (movieGrid) {
 
 // --- WATCHLIST ---------------------------------------------------------------------------------
 
-const watchlistContainer = document.getElementById("watchlistGrid"); 
+const watchlistContainer = document.getElementById("watchlistGrid");
 
 if (watchlistContainer) {
-    
-    let watchList = JSON.parse(localStorage.getItem("watchList")) || []; 
+
+    let watchList = JSON.parse(localStorage.getItem("watchList")) || [];
 
 
 
@@ -454,15 +573,14 @@ if (watchlistContainer) {
         watchList.forEach(movie => {
             const col = document.createElement("div");
 
-            col.classList.add("col"); 
+            col.classList.add("col");
             col.innerHTML = `
 
                 <div class="movie-card">
-                    <img src="${
-                        movie.poster_path
-                            ? IMG_BASE_URL + movie.poster_path
-                            : "placeholder.jpg"
-                    }" alt="${movie.title}">
+                    <img src="${movie.poster_path
+                    ? IMG_BASE_URL + movie.poster_path
+                    : "placeholder.jpg"
+                }" alt="${movie.title}">
                     <h3>${movie.title}</h3>
                     <div class="d-flex justify-content-center gap-2 mt-2">
                         <button class="btn btn-sm btn-dark" onclick="goToDetails(${movie.id})">Details</button>
