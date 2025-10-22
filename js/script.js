@@ -87,8 +87,13 @@ function homeDisplayPopularMovies(homeMoviesArray) {
   <div class="card-body">
     <h5 class="home-popular-card-title">${movie.title}</h5>
     <p class="home-popular-card-text">${movie.popularity}</p>
-    <a href="#" class="home-card-button btn">Details</a>
-    <a href="#" class="home-card-button btn">Watchlist</a>
+    <div class="d-flex justify-content-center gap-2 mt-2">
+                        <button class="movie-card-details-btn btn" onclick="goToDetails(${movie.id
+                })">Details</button>
+                        <button class="movie-card-watchlist-btn btn" onclick='addToWatchlist(${JSON.stringify(
+                    movie
+                )})'>Add to Watchlist</button>
+                    </div>
   </div>
 </div> 
 </div>`
@@ -101,13 +106,18 @@ function homeDisplayTopRatedMovies(homeMoviesArray) {
 
     homeTopRatedContainer.innerHTML = homeMoviesArray.map(movie => `
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-        <div class="card homeTopRatedMovieCard h-100" style="width: 18rem;">
+        <div class="card homeTopRatedMovieCard" style="width: 18rem;">
   <img src="${movie.image}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="home-top-rated-card-title">${movie.title}</h5>
     <p class="home-top-rated-card-text">${movie.rating}</p>
-    <a href="#" class="home-card-button btn">Details</a>
-    <a href="#" class="home-card-button btn">Watchlist</a>
+    <div class="d-flex justify-content-center gap-2 mt-2">
+                        <button class="movie-card-details-btn btn" onclick="goToDetails(${movie.id
+                })">Details</button>
+                        <button class="movie-card-watchlist-btn btn" onclick='addToWatchlist(${JSON.stringify(
+                    movie
+                )})'>Add to Watchlist</button>
+                    </div>
   </div>
 </div> 
 </div>
@@ -320,9 +330,9 @@ const movieGrid = document.getElementById("movieGrid");
                 }" alt="${movie.title}">
                     <h3>${movie.title}</h3>
                     <div class="d-flex justify-content-center gap-2 mt-2">
-                        <button class="btn btn-sm btn-dark" onclick="goToDetails(${movie.id
+                        <button class="movie-card-details-btn btn btn-sm " onclick="goToDetails(${movie.id
                 })">Details</button>
-                        <button class="btn btn-sm btn-success" onclick='addToWatchlist(${JSON.stringify(
+                        <button class="movie-card-watchlist-btn btn btn-sm " onclick='addToWatchlist(${JSON.stringify(
                     movie
                 )})'>Add to Watchlist</button>
                     </div>
@@ -568,7 +578,7 @@ if (watchlistContainer) {
 
 
     if (watchList.length === 0) {
-        watchlistContainer.innerHTML = "<p class='text-center mt-5 w-100'>No movies in your watchlist yet!</p>";
+        watchlistContainer.innerHTML = "<p class='watchlist-message text-center mt-5 w-100'>No movies in your watchlist yet!</p>";
     } else {
         watchList.forEach(movie => {
             const col = document.createElement("div");
@@ -583,8 +593,8 @@ if (watchlistContainer) {
                 }" alt="${movie.title}">
                     <h3>${movie.title}</h3>
                     <div class="d-flex justify-content-center gap-2 mt-2">
-                        <button class="btn btn-sm btn-dark" onclick="goToDetails(${movie.id})">Details</button>
-                        <button class="btn btn-sm btn-danger" onclick="removeFromWatchlist(${movie.id})">Remove</button>
+                        <button class=movie-card-details-btn btn btn-sm btn-dark" onclick="goToDetails(${movie.id})">Details</button>
+                        <button class="movie-card-remove-btn btn btn-sm " onclick="removeFromWatchlist(${movie.id})">Remove</button>
                     </div>
                 </div>
             `;
