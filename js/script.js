@@ -241,13 +241,6 @@ main();
 
 //00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-// //Notes (by Lara)
-// //In 2024 I took a gap year and got my certification in web development with Hyperiondev, in a course that consisted of HTML, CSS and javascript predominantly.
-// //In my last submission, I recieved feedback that said my code was "clearly" AI assisted because my Async function syntax was more advanced than what a first year could do, and that my code had too many comments.
-// //Ill admit that maybe my comments weren't specific enough in their explanations, and my async function syntax probably wasn't what you were looking for, but I'm linking my portfolio from Hyperiondev regardless, just to prove that I know what I'm doing.
-// // https://www.hyperiondev.com/portfolio/234891/
-
-
 const API_KEY = "0d4ce6a4966a08401c202627e29b935a";
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMG_BASE_URL = "https://image.tmdb.org/t/p/w500";
