@@ -1,5 +1,7 @@
 
-//Rhichelle's backend
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//RHICHELLE STRAUSS 251169 SECTION
+//BACKEND FOR HOMEPAGE & SIGNUP     
 const HOME_API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MGI5ZjllOWI0YmRiMDNhYWZkYjFmM2FhM2YzYTFjNyIsIm5iZiI6MTc1NzY5MTA5MS4wNiwic3ViIjoiNjhjNDNjZDMyYWE0OTJlZWMxZDI2NTRkIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.3pBCgQ0z1aqjr_XqG-7ae9DlEGMCPykT5w9S1qh4pZw";
 const HOME_API_KEY = "60b9f9e9b4bdb03aafdb1f3aa3f3a1c7";
 const HOME_BASE_URL = "https://api.themoviedb.org/3";
@@ -23,9 +25,6 @@ class homeMovie {
         this.popularity = popularity;
     }
 }
-
-
-
 
 function homeDisplayUpcoming(homeMoviesArray) {
     const homeUpcomingContainer = document.getElementById('homeMovieHeader');
@@ -89,10 +88,10 @@ function homeDisplayPopularMovies(homeMoviesArray) {
     <p class="home-popular-card-text">${movie.popularity}</p>
     <div class="d-flex justify-content-center gap-2 mt-2">
                         <button class="movie-card-details-btn btn" onclick="goToDetails(${movie.id
-                })">Details</button>
+        })">Details</button>
                         <button class="movie-card-watchlist-btn btn" onclick='addToWatchlist(${JSON.stringify(
-                    movie
-                )})'>Add to Watchlist</button>
+            movie
+        )})'>Add to Watchlist</button>
                     </div>
   </div>
 </div> 
@@ -113,10 +112,10 @@ function homeDisplayTopRatedMovies(homeMoviesArray) {
     <p class="home-top-rated-card-text">${movie.rating}</p>
     <div class="d-flex justify-content-center gap-2 mt-2">
                         <button class="movie-card-details-btn btn" onclick="goToDetails(${movie.id
-                })">Details</button>
+        })">Details</button>
                         <button class="movie-card-watchlist-btn btn" onclick='addToWatchlist(${JSON.stringify(
-                    movie
-                )})'>Add to Watchlist</button>
+            movie
+        )})'>Add to Watchlist</button>
                     </div>
   </div>
 </div> 
@@ -245,7 +244,15 @@ async function main() {
 }
 
 main();
-//Rhichelle's backend
+
+//( •̀ ω •́ )✧
+//✧✧✧✧✧✧✧✧ SIGNUP/LOGIN PAGE CODE ✧✧✧✧✧✧✧✧ᓚᘏᗢ//
+
+
+//☆*: .｡. o(≧▽≦)o .｡.:*☆
+//HOMEPAGE AND SIGNUP PAGE SECTION DONE
+//Rhichelle's backend  ᓚᘏᗢ
+//------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -302,86 +309,86 @@ const movieGrid = document.getElementById("movieGrid");
 
 
 
-    async function loadMovies(url, limit = 25) {
-        try {
-            const res = await fetch(url);
-            const data = await res.json();
-            const movies = data.results.slice(0, limit);
-            displayMovies(movies);
-        } catch (err) {
-            console.log("fetch error:", err);
-        }
+async function loadMovies(url, limit = 25) {
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        const movies = data.results.slice(0, limit);
+        displayMovies(movies);
+    } catch (err) {
+        console.log("fetch error:", err);
     }
+}
 
-    function displayMovies(movies) {
+function displayMovies(movies) {
 
-        if(!movieGrid) return;
+    if (!movieGrid) return;
 
-        movieGrid.innerHTML = "";
+    movieGrid.innerHTML = "";
 
-        movies.forEach((movie) => {
-            const col = document.createElement("div");
-            col.classList.add("col");
-            col.innerHTML = `
+    movies.forEach((movie) => {
+        const col = document.createElement("div");
+        col.classList.add("col");
+        col.innerHTML = `
                 <div class="movie-card">
                     <img src="${movie.poster_path
-                    ? IMG_BASE_URL + movie.poster_path
-                    : "placeholder.jpg"
-                }" alt="${movie.title}">
+                ? IMG_BASE_URL + movie.poster_path
+                : "placeholder.jpg"
+            }" alt="${movie.title}">
                     <h3>${movie.title}</h3>
                     <div class="d-flex justify-content-center gap-2 mt-2">
                         <button class="movie-card-details-btn btn btn-sm " onclick="goToDetails(${movie.id
-                })">Details</button>
+            })">Details</button>
                         <button class="movie-card-watchlist-btn btn btn-sm " onclick='addToWatchlist(${JSON.stringify(
-                    movie
-                )})'>Add to Watchlist</button>
+                movie
+            )})'>Add to Watchlist</button>
                     </div>
                 </div>
             `;
-            movieGrid.appendChild(col);
+        movieGrid.appendChild(col);
+    });
+}
+
+async function loadGenres() {
+    const res = await fetch(
+        `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
+    );
+    const data = await res.json();
+    const genreSelect = document.getElementById("genreSelect");
+    if (genreSelect) {
+        data.genres.forEach((genre) => {
+            const option = document.createElement("option");
+            option.value = genre.id;
+            option.textContent = genre.name;
+            genreSelect.appendChild(option);
         });
     }
-    
-    async function loadGenres() {
-        const res = await fetch(
-            `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
-        );
-        const data = await res.json();
-        const genreSelect = document.getElementById("genreSelect");
-        if (genreSelect) {
-            data.genres.forEach((genre) => {
-                const option = document.createElement("option");
-                option.value = genre.id;
-                option.textContent = genre.name;
-                genreSelect.appendChild(option);
-            });
-        }
-    }
+}
 
 
-    document.addEventListener("DOMContentLoaded", () =>{
+document.addEventListener("DOMContentLoaded", () => {
 
-        const searchBtn = document.getElementById("searchBtn");
-        const searchInput = document.getElementById("searchInput");
-        const filterBtn = document.getElementById("filterBtn");
-        const filterMenu = document.getElementById("filterMenu");
-        const filterType = document.getElementById("filterType");
-        const genreFilter = document.getElementById("genreFilter");
-        const yearFilter = document.getElementById("yearFilter");
-        const ratingFilter = document.getElementById("ratingFilter");
-        const genreSelect = document.getElementById("genreSelect");
-        const yearSelect = document.getElementById("yearSelect");
-        const ratingSelect = document.getElementById("ratingSelect");
+    const searchBtn = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
+    const filterBtn = document.getElementById("filterBtn");
+    const filterMenu = document.getElementById("filterMenu");
+    const filterType = document.getElementById("filterType");
+    const genreFilter = document.getElementById("genreFilter");
+    const yearFilter = document.getElementById("yearFilter");
+    const ratingFilter = document.getElementById("ratingFilter");
+    const genreSelect = document.getElementById("genreSelect");
+    const yearSelect = document.getElementById("yearSelect");
+    const ratingSelect = document.getElementById("ratingSelect");
 
-        //loadig cards
-        loadMovies(
-             `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
-        );
+    //loadig cards
+    loadMovies(
+        `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+    );
 
-        loadGenres();
+    loadGenres();
 
-        //dropdown
-        if (yearSelect) {
+    //dropdown
+    if (yearSelect) {
         const currentYear = new Date().getFullYear();
         for (let y = currentYear; y >= currentYear - 50; y--) {
             const option = document.createElement("option");
@@ -393,16 +400,16 @@ const movieGrid = document.getElementById("movieGrid");
 
     //event listener
     if (searchBtn && searchInput) {
-            searchBtn.addEventListener("click", () => {
-                const query = searchInput.value.trim();
-                if (query) {
-                    loadMovies(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
-                }
-            });
-        }
+        searchBtn.addEventListener("click", () => {
+            const query = searchInput.value.trim();
+            if (query) {
+                loadMovies(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
+            }
+        });
+    }
 
-        //filter menu listeners
-        if (filterBtn && filterMenu && filterType) {
+    //filter menu listeners
+    if (filterBtn && filterMenu && filterType) {
         filterBtn.addEventListener("click", () => {
             filterMenu.style.display =
                 filterMenu.style.display === "none" ? "block" : "none";
@@ -435,7 +442,7 @@ const movieGrid = document.getElementById("movieGrid");
         });
     }
 
-   if (yearSelect) {
+    if (yearSelect) {
         yearSelect.addEventListener("change", (e) => {
             const year = e.target.value;
             if (year) {
@@ -447,7 +454,7 @@ const movieGrid = document.getElementById("movieGrid");
     }
 
 
-if (ratingSelect) {
+    if (ratingSelect) {
         ratingSelect.addEventListener("change", (e) => {
             const rating = e.target.value;
             if (rating) {
@@ -459,108 +466,108 @@ if (ratingSelect) {
     }
 
 
-    });
+});
 
 
-    // searchBtn.addEventListener("click", () => {
-    //     const query = searchInput.value.trim();
-    //     if (query) {
-    //         loadMovies(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
-    //     }
-    // });
+// searchBtn.addEventListener("click", () => {
+//     const query = searchInput.value.trim();
+//     if (query) {
+//         loadMovies(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
+//     }
+// });
 
-    // const filterBtn = document.getElementById("filterBtn");
-    // const filterMenu = document.getElementById("filterMenu");
-    // const filterType = document.getElementById("filterType");
-    // const genreFilter = document.getElementById("genreFilter");
-    // const yearFilter = document.getElementById("yearFilter");
-    // const ratingFilter = document.getElementById("ratingFilter");
+// const filterBtn = document.getElementById("filterBtn");
+// const filterMenu = document.getElementById("filterMenu");
+// const filterType = document.getElementById("filterType");
+// const genreFilter = document.getElementById("genreFilter");
+// const yearFilter = document.getElementById("yearFilter");
+// const ratingFilter = document.getElementById("ratingFilter");
 
-    // if (filterBtn && filterMenu && filterType) {
-    //     filterBtn.addEventListener("click", () => {
-    //         filterMenu.style.display =
-    //             filterMenu.style.display === "none" ? "block" : "none";
-    //     });
+// if (filterBtn && filterMenu && filterType) {
+//     filterBtn.addEventListener("click", () => {
+//         filterMenu.style.display =
+//             filterMenu.style.display === "none" ? "block" : "none";
+//     });
 
-    //     filterType.addEventListener("change", () => {
-    //         [genreFilter, yearFilter, ratingFilter].forEach(
-    //             (el) => el && (el.style.display = "none")
-    //         );
+//     filterType.addEventListener("change", () => {
+//         [genreFilter, yearFilter, ratingFilter].forEach(
+//             (el) => el && (el.style.display = "none")
+//         );
 
-    //         if (filterType.value === "genre" && genreFilter) genreFilter.style.display = "block";
-    //         if (filterType.value === "year" && yearFilter) yearFilter.style.display = "block";
-    //         if (filterType.value === "rating" && ratingFilter) ratingFilter.style.display = "block";
+//         if (filterType.value === "genre" && genreFilter) genreFilter.style.display = "block";
+//         if (filterType.value === "year" && yearFilter) yearFilter.style.display = "block";
+//         if (filterType.value === "rating" && ratingFilter) ratingFilter.style.display = "block";
 
-    //         if (filterType.value === "all") {
-    //             loadMovies(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US`);
-    //         }
-    //     });
-    // }
+//         if (filterType.value === "all") {
+//             loadMovies(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US`);
+//         }
+//     });
+// }
 
-    // async function loadGenres() {
-    //     const res = await fetch(
-    //         `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
-    //     );
-    //     const data = await res.json();
-    //     const genreSelect = document.getElementById("genreSelect");
-    //     if (genreSelect) {
-    //         data.genres.forEach((genre) => {
-    //             const option = document.createElement("option");
-    //             option.value = genre.id;
-    //             option.textContent = genre.name;
-    //             genreSelect.appendChild(option);
-    //         });
-    //     }
-    // }
-    // loadGenres();
+// async function loadGenres() {
+//     const res = await fetch(
+//         `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
+//     );
+//     const data = await res.json();
+//     const genreSelect = document.getElementById("genreSelect");
+//     if (genreSelect) {
+//         data.genres.forEach((genre) => {
+//             const option = document.createElement("option");
+//             option.value = genre.id;
+//             option.textContent = genre.name;
+//             genreSelect.appendChild(option);
+//         });
+//     }
+// }
+// loadGenres();
 
-    // const yearSelect = document.getElementById("yearSelect");
-    // if (yearSelect) {
-    //     const currentYear = new Date().getFullYear();
-    //     for (let y = currentYear; y >= currentYear - 50; y--) {
-    //         const option = document.createElement("option");
-    //         option.value = y;
-    //         option.textContent = y;
-    //         yearSelect.appendChild(option);
-    //     }
-    // }
+// const yearSelect = document.getElementById("yearSelect");
+// if (yearSelect) {
+//     const currentYear = new Date().getFullYear();
+//     for (let y = currentYear; y >= currentYear - 50; y--) {
+//         const option = document.createElement("option");
+//         option.value = y;
+//         option.textContent = y;
+//         yearSelect.appendChild(option);
+//     }
+// }
 
 
-    // const genreSelect = document.getElementById("genreSelect");
-    // if (genreSelect) {
-    //     genreSelect.addEventListener("change", (e) => {
-    //         const genreId = e.target.value;
-    //         if (genreId) {
-    //             loadMovies(
-    //                 `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`
-    //             );
-    //         }
-    //     });
-    // }
+// const genreSelect = document.getElementById("genreSelect");
+// if (genreSelect) {
+//     genreSelect.addEventListener("change", (e) => {
+//         const genreId = e.target.value;
+//         if (genreId) {
+//             loadMovies(
+//                 `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`
+//             );
+//         }
+//     });
+// }
 
-    // const yearSelectListener = document.getElementById("yearSelect");
-    // if (yearSelectListener) {
-    //     yearSelectListener.addEventListener("change", (e) => {
-    //         const year = e.target.value;
-    //         if (year) {
-    //             loadMovies(
-    //                 `${BASE_URL}/discover/movie?api_key=${API_KEY}&primary_release_year=${year}`
-    //             );
-    //         }
-    //     });
-    // }
+// const yearSelectListener = document.getElementById("yearSelect");
+// if (yearSelectListener) {
+//     yearSelectListener.addEventListener("change", (e) => {
+//         const year = e.target.value;
+//         if (year) {
+//             loadMovies(
+//                 `${BASE_URL}/discover/movie?api_key=${API_KEY}&primary_release_year=${year}`
+//             );
+//         }
+//     });
+// }
 
-    // const ratingSelect = document.getElementById("ratingSelect");
-    // if (ratingSelect) {
-    //     ratingSelect.addEventListener("change", (e) => {
-    //         const rating = e.target.value;
-    //         if (rating) {
-    //             loadMovies(
-    //                 `${BASE_URL}/discover/movie?api_key=${API_KEY}&vote_average.gte=${rating}`
-    //             );
-    //         }
-    //     });
-    // }
+// const ratingSelect = document.getElementById("ratingSelect");
+// if (ratingSelect) {
+//     ratingSelect.addEventListener("change", (e) => {
+//         const rating = e.target.value;
+//         if (rating) {
+//             loadMovies(
+//                 `${BASE_URL}/discover/movie?api_key=${API_KEY}&vote_average.gte=${rating}`
+//             );
+//         }
+//     });
+// }
 
 
 
