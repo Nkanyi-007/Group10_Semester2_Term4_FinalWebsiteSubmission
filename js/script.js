@@ -295,6 +295,10 @@ if (movieGrid) {
   document.addEventListener("DOMContentLoaded", () => {
     const filterBtn = document.getElementById("filterBtn");
     const filterMenu = document.getElementById("filterMenu");
+
+    filterBtn.addEventListener("click", () => {
+      filterMenu.classList.toggle("active");
+    });
     const filterType = document.getElementById("filterType");
     const genreFilter = document.getElementById("genreFilter");
     const yearFilter = document.getElementById("yearFilter");
@@ -368,7 +372,9 @@ if (movieGrid) {
 
     async function loadGenres() {
       try {
-        const res = await fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`);
+        const res = await fetch(
+          `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
+        );
         const data = await res.json();
         data.genres.forEach((genre) => {
           const option = document.createElement("option");
@@ -388,10 +394,6 @@ if (movieGrid) {
       option.textContent = y;
       yearSelect.appendChild(option);
     }
-
-    filterBtn?.addEventListener("click", () => {
-      filterMenu.style.display = filterMenu.style.display === "none" ? "block" : "none";
-    });
 
     filterType?.addEventListener("change", () => {
       [genreFilter, yearFilter, ratingFilter].forEach(
@@ -429,7 +431,7 @@ if (movieGrid) {
     });
 
     loadGenres();
-    loadMovies(); 
+    loadMovies();
   });
 }
 
