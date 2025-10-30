@@ -381,7 +381,8 @@ i.fa-solid.fa-magnifying-glass{
 .homePopularSection,
 .home-top-rated-card-title,
 .homeTopRatedSection,
-.movie-card h3{
+.movie-card h3,
+.watchlist-title{
   align-items: center;
     text-align: center;
     font-family: "Orbitron", sans-serif;
@@ -400,7 +401,10 @@ i.fa-solid.fa-magnifying-glass{
 
 
 
-.home-card-button {
+.home-card-button,
+.movie-card-details-btn,
+.movie-card-remove-btn,
+.movie-card-watchlist-btn {
   position: relative;
   z-index: 10;
   font-family: "ff-good-headline-web-pro-ext", sans-serif;
@@ -422,7 +426,9 @@ i.fa-solid.fa-magnifying-glass{
 }
 
 /* rgba(242, 109, 61, 0.677) */
-.home-card-button::before {
+.home-card-button::before,
+.movie-card-details-btn::before,
+.movie-card-watchlist-btn::before {
   position: absolute;
 
   top: 50%;
@@ -440,13 +446,55 @@ i.fa-solid.fa-magnifying-glass{
   width: 100px;
   height: 50px;
 }
-.home-card-button:hover::before {
+.home-card-button:hover::before,
+.movie-card-details-btn:hover::before,
+.movie-card-watchlist-btn:hover::before,
+.movie-card-remove-btn:hover::before {
   transform: translate(-50%, -50%) scale(1.3);
   
 }
 
+.movie-card-watchlist-btn::before{
+position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  z-index: -1;
+  transform: translate(-50%, -50%) scale(.8);
+  transition: transform 0.5s ease;
+  border-radius: 50px;
+  background-color: #20423f;
+  filter: blur(10px);
+  content: "";
+  
+
+  width: 100px;
+  height: 50px;
+}
+
+.movie-card-remove-btn::before{
+ position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  z-index: -1;
+  transform: translate(-50%, -50%) scale(.8);
+  transition: transform 0.5s ease;
+  border-radius: 50px;
+  background-color: #8c1b2f;
+  filter: blur(10px);
+  content: "";
+  
+
+  width: 100px;
+  height: 50px;
+}
+
 .homePopularSection,
-.homeTopRatedSection{
+.homeTopRatedSection,
+.watchlist-title{
 font-size: 32px;
 }
 
@@ -457,7 +505,13 @@ font-size: 32px;
   background-position: center center;
   background-size: cover;
 }
+.watchlist-message{
+  font-family: "ff-good-headline-web-pro-ext", sans-serif;
+    font-weight: 400;
 
+    font-size: 24px;
+    color: #E6E8E6;
+}
 /* Lara */
 
 .filters {
