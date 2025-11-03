@@ -247,7 +247,56 @@ main();
 
 //( •̀ ω •́ )✧
 //✧✧✧✧✧✧✧✧ SIGNUP/LOGIN PAGE CODE ✧✧✧✧✧✧✧✧ᓚᘏᗢ//
+document.addEventListener("DOMContentLoaded", function() {
+  
+  const signUpButton = document.getElementById('signUp');
+  const logInButton = document.getElementById('logIn');
+  const container = document.getElementById('auth-container');
 
+  // Mobile toggles
+  const mobileSignUpButton = document.getElementById('mobileSignUp');
+  const mobileLogInButton = document.getElementById('mobileLogIn');
+
+  // Desktop Toggles
+  if (signUpButton) {
+    signUpButton.addEventListener('click', () => {
+      container.classList.add("right-panel-active");
+    });
+  }
+
+  if (logInButton) {
+    logInButton.addEventListener('click', () => {
+      container.classList.remove("right-panel-active");
+    });
+  }
+  
+  // Mobile Toggles
+  if (mobileSignUpButton) {
+    mobileSignUpButton.addEventListener('click', (e) => {
+      e.preventDefault(); 
+      container.classList.add("right-panel-active");
+    });
+  }
+  
+  if (mobileLogInButton) {
+    mobileLogInButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      container.classList.remove("right-panel-active");
+    });
+  }
+
+});
+$(document).ready(function() {
+    const $authContainer = $('#auth-container');
+
+    $('#signUp').on('click', function() {
+        $authContainer.addClass('right-panel-active');
+    });
+
+    $('#logIn').on('click', function() {
+        $authContainer.removeClass('right-panel-active');
+    });
+});
 
 //☆*: .｡. o(≧▽≦)o .｡.:*☆
 //HOMEPAGE AND SIGNUP PAGE SECTION DONE
