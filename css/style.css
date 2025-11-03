@@ -1,13 +1,9 @@
-
-
-
-body{
+body {
   background-image: url(../assets/img/p1xie\ flix\ background.png);
   background-attachment: fixed;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  
 }
 
 
@@ -16,62 +12,57 @@ body{
 ᓚᘏᗢ Rhichelle's front-end  */
 
 .homeHeader {
-   
-    align-items: center;
-    text-align: center;
-    font-family: "Orbitron", sans-serif;
-    font-weight: 900;
-    color: #8c1b2f;
-
+  align-items: center;
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 900;
+  color: #8c1b2f;
 }
 #home-carousel-auto img {
   aspect-ratio: 16 / 9;
-  object-fit: cover; 
+  object-fit: cover;
 }
 
-button.profile{
+button.profile {
   background: none;
   border: none;
   cursor: pointer;
 }
 
 a.profile i.fa-solid.fa-user {
-  
-  display: inline-block !important; 
-  font-size: 24px !important; 
-  font-style: normal !important; 
-  z-index: 100; position: relative;
-  color: #8c1b2f;
-  
-}
-i.fa-solid.fa-magnifying-glass{
-  display: inline-block !important; 
-  font-size: 24px !important; 
-  font-style: normal !important; 
-  z-index: 100; position: relative;
+  display: inline-block !important;
+  font-size: 24px !important;
+  font-style: normal !important;
+  z-index: 100;
+  position: relative;
   color: #8c1b2f;
 }
-
-
+i.fa-solid.fa-magnifying-glass {
+  display: inline-block !important;
+  font-size: 24px !important;
+  font-style: normal !important;
+  z-index: 100;
+  position: relative;
+  color: #8c1b2f;
+}
 
 .navBarContainer {
-    background-color: #202126c4;
-    border-bottom: #ffffffe3 solid;
-    border-width: 6px;
-    border-radius: 8px;
-    font-family: "Orbitron", sans-serif;
-    font-weight: 900;
-    color: #8c1b2f;
+  background-color: #202126c4;
+  border-bottom: #ffffffe3 solid;
+  border-width: 6px;
+  border-radius: 8px;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 900;
+  color: #8c1b2f;
 }
 
 .navBarContainer a:hover {
   transform: scale(1.1);
-    color: #F26D3D;
+  color: #f26d3d;
 }
 
 .active-link {
-    color: #F26D3D;
-
+  color: #f26d3d;
 }
 
 /* .homeHeader.noise::before {
@@ -93,79 +84,69 @@ i.fa-solid.fa-magnifying-glass{
     filter: invert(14%) sepia(73%) saturate(3190%) hue-rotate(335deg) brightness(86%) contrast(92%);
 } */
 
-
-
 #homeMovieHeader {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    align-items: center;
+  align-items: center;
 }
 
 #home-carousel-auto {
-    
-    width: 70%;
-    height: 70%;
+  width: 70%;
+  height: 70%;
 }
-
 
 .movie-title {
-    font-family: "Orbitron", sans-serif;
-    font-weight: 700;
-    font-size: 32px;
-    color: #8c1b2f;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: #8c1b2f;
 }
-.searchIcon{
-    color: #8c1b2f;
+.searchIcon {
+  color: #8c1b2f;
 }
 .movie-rating,
 .release-date,
 .movie-overview {
-    font-family: "ff-good-headline-web-pro-ext", sans-serif;
-    font-weight: 400;
-    font-size: 22px;
-    color: #ffffff;
+  font-family: "ff-good-headline-web-pro-ext", sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #ffffff;
 }
 
-
-
 .popularMoviesSection {
-    align-items: center;
-    text-align: center;
-    font-family: "Orbitron", sans-serif;
-    font-weight: 900;
-    color: #8c1b2f;
-    font-size: 48px;
-
+  align-items: center;
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 900;
+  color: #8c1b2f;
+  font-size: 48px;
 }
 
 .pixieFooter {
-   
-    background-color: #202126;
-    padding: 2.5rem 1rem;
-    border-top: 2px solid rgba(255, 255, 255, 0.2);
-    
+  background-color: #202126;
+  padding: 2.5rem 1rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
 }
 .footer-links {
-  
   margin-bottom: 1rem;
   font-family: "ff-good-headline-web-pro-ext", sans-serif;
-    font-weight: 500;
-    font-size: 24px;
-    display: flex;
-    flex-direction: column;
+  font-weight: 500;
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-link {
   color: #eee;
   text-decoration: none;
   transition: color 0.3s ease, transform 0.3s ease;
-  margin-bottom: 0.5rem ;
+  margin-bottom: 0.5rem;
   /* display: block; */
 }
 
 .footer-link:hover {
-  color: #F26D3D;
+  color: #f26d3d;
   transform: scale(1.1);
 }
 
@@ -183,26 +164,22 @@ i.fa-solid.fa-magnifying-glass{
   justify-content: left; */
 
   height: 100px;
-  
-  box-shadow: 0 0 10px rgba(232, 233, 243, .5);
+
+  box-shadow: 0 0 10px rgba(232, 233, 243, 0.5);
 }
 
 .footer-social img {
   width: 40px;
   height: 40px;
-  
 }
 
-
-
 .social-link:hover {
-
   transform: translateY(-2px);
 }
 
 .footer-copy {
   font-family: "ff-good-headline-web-pro-ext", sans-serif;
-  font-weight:600;
+  font-weight: 600;
   letter-spacing: 1px;
   font-size: 14px;
   color: #ccc;
@@ -212,14 +189,11 @@ i.fa-solid.fa-magnifying-glass{
 .footer {
   animation: fadeInUp 1s ease forwards;
 }
-.footer-slogan{
- 
+.footer-slogan {
   font-family: "ff-good-headline-web-pro-ext", sans-serif;
-    font-weight: 500;
-    font-size: 32px;
-    
+  font-weight: 500;
+  font-size: 32px;
 }
-
 
 /* .pixieFooter.noise::before {
     content: '';
@@ -232,7 +206,6 @@ i.fa-solid.fa-magnifying-glass{
     mix-blend-mode:darken;
     pointer-events: none;
 } */
-
 
 /* .homeButton {
   min-height: 53px;
@@ -310,15 +283,15 @@ i.fa-solid.fa-magnifying-glass{
   position: relative;
   z-index: 10;
   font-family: "ff-good-headline-web-pro-ext", sans-serif;
-    font-weight: 600;
-    font-size: 32px;
+  font-weight: 600;
+  font-size: 32px;
   width: 200px;
   height: 60px;
-  border: 1px solid rgba(232, 233, 243, .5);
+  border: 1px solid rgba(232, 233, 243, 0.5);
   border-radius: 8px;
   background-color: rgba(232, 233, 243, 0.215);
   color: #202126;
-  
+
   letter-spacing: 1px;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -335,10 +308,10 @@ i.fa-solid.fa-magnifying-glass{
   width: 100px;
   height: 30px;
   border-radius: 50px;
-  background-color: #F26D3D;
+  background-color: #f26d3d;
   filter: blur(10px);
   content: "";
-  transition: .5s;
+  transition: 0.5s;
 }
 .homeButton:hover::before {
   transform: scale(2);
@@ -346,9 +319,8 @@ i.fa-solid.fa-magnifying-glass{
 
 /* button styling */
 
-
 .homePopularMovieCard,
-.homeTopRatedMovieCard{
+.homeTopRatedMovieCard {
   background-color: #e6e8e6b9;
   border-radius: 12px;
   text-align: center;
@@ -375,11 +347,10 @@ i.fa-solid.fa-magnifying-glass{
 }
 
 #homePopularMoviesGrid,
-#homeTopRatedMoviesGrid{
+#homeTopRatedMoviesGrid {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
 }
 
 .home-popular-card-title,
@@ -387,26 +358,25 @@ i.fa-solid.fa-magnifying-glass{
 .home-top-rated-card-title,
 .homeTopRatedSection,
 .movie-card h3,
-.watchlist-title{
+.watchlist-title {
   align-items: center;
-    text-align: center;
-    font-family: "Orbitron", sans-serif;
-    font-weight: 900;
-    color: #8c1b2f;
-    font-size: 18px;
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 900;
+  color: #8c1b2f;
+  font-size: 18px;
 }
 
 .home-popular-card-text,
-.home-top-rated-card-text{
+.home-top-rated-card-text {
   font-family: "ff-good-headline-web-pro-ext", sans-serif;
-    font-weight: 500;
-    font-size: 22px;
-    color: #202126;
+  font-weight: 500;
+  font-size: 22px;
+  color: #202126;
 }
 
 
-#logInbtn,
-#signUpbtn,
+
 .home-card-button,
 .movie-card-details-btn,
 .movie-card-remove-btn,
@@ -414,16 +384,16 @@ i.fa-solid.fa-magnifying-glass{
   position: relative;
   z-index: 10;
   font-family: "ff-good-headline-web-pro-ext", sans-serif;
-    font-weight: 600;
+  font-weight: 600;
 
-    font-size: 20px;
-    padding: 14px 18px;
-  
+  font-size: 20px;
+  padding: 14px 18px;
+
   border: 1px solid rgba(32, 33, 38, 0.197);
   border-radius: 8px;
   background-color: rgba(32, 33, 38, 0.137);
   color: #202126;
-  
+
   letter-spacing: 1px;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -442,13 +412,12 @@ i.fa-solid.fa-magnifying-glass{
   left: 50%;
 
   z-index: -1;
-  transform: translate(-50%, -50%) scale(.8);
+  transform: translate(-50%, -50%) scale(0.8);
   transition: transform 0.5s ease;
   border-radius: 50px;
-  background-color: #F26D3D;
+  background-color: #f26d3d;
   filter: blur(10px);
   content: "";
-  
 
   width: 100px;
   height: 50px;
@@ -458,42 +427,39 @@ i.fa-solid.fa-magnifying-glass{
 .movie-card-watchlist-btn:hover::before,
 .movie-card-remove-btn:hover::before {
   transform: translate(-50%, -50%) scale(1.3);
-  
 }
 
-.movie-card-watchlist-btn::before{
-position: absolute;
+.movie-card-watchlist-btn::before {
+  position: absolute;
 
   top: 50%;
   left: 50%;
 
   z-index: -1;
-  transform: translate(-50%, -50%) scale(.8);
+  transform: translate(-50%, -50%) scale(0.8);
   transition: transform 0.5s ease;
   border-radius: 50px;
   background-color: #20423f;
   filter: blur(10px);
   content: "";
-  
 
   width: 100px;
   height: 50px;
 }
 
-.movie-card-remove-btn::before{
- position: absolute;
+.movie-card-remove-btn::before {
+  position: absolute;
 
   top: 50%;
   left: 50%;
 
   z-index: -1;
-  transform: translate(-50%, -50%) scale(.8);
+  transform: translate(-50%, -50%) scale(0.8);
   transition: transform 0.5s ease;
   border-radius: 50px;
   background-color: #8c1b2f;
   filter: blur(10px);
   content: "";
-  
 
   width: 100px;
   height: 50px;
@@ -501,61 +467,135 @@ position: absolute;
 
 .homePopularSection,
 .homeTopRatedSection,
-.watchlist-title{
-font-size: 32px;
+.watchlist-title {
+  font-size: 32px;
 }
 
-.signUpPage{
+.signUpPage {
   background-image: url(../assets/img/DV\ background\ log\ in_sign\ up.png);
   height: 100vh;
-    background-repeat: no-repeat; 
+  background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
 }
-.watchlist-message{
+.watchlist-message {
   font-family: "ff-good-headline-web-pro-ext", sans-serif;
-    font-weight: 400;
+  font-weight: 400;
 
-    font-size: 24px;
-    color: #E6E8E6;
+  font-size: 24px;
+  color: #e6e8e6;
 }
+
 /* Lara */
 
-.filters {
-  background-color: #20423f;
-  padding: 0.6rem 2rem;
+.filters-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  border-radius: 0;
-  width: 100%;
+  position: relative;
   margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
-.filters,
-.filter-menu {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+.filter-bar {
+  background-color: #20423f;
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  width: 85%;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
-.filters button {
-  background: none;
-  border: none;
-  font-size: 1rem;
-  color: white;
-}
-
-.filter-menu {
-  margin-top: 1rem;
+.filter-btn {
+  font-family: "ff-good-headline-web-pro-ext", sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: #e8e9f3;
+  background-color: rgba(232, 233, 243, 0.12);
+  border: 1.5px solid rgba(232, 233, 243, 0.35);
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2rem;
-}
-.filter-menu label {
-  font-weight: bold;
+  padding: 0.8rem 1.8rem;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  backdrop-filter: blur(8px);
+  letter-spacing: 1px;
 }
 
-main.container {
-  margin-top: 1rem;
+.filter-btn:hover {
+  background-color: rgba(232, 233, 243, 0.25);
+  transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(232, 233, 243, 0.4);
+}
+
+.filter-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%) scale(0.9);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  background-color: rgba(32, 33, 38, 0.92);
+  border: 2px solid rgba(232, 233, 243, 0.2);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  color: #e8e9f3;
+  font-family: "ff-good-headline-web-pro-ext", sans-serif;
+  font-weight: 400;
+  width: 75%;
+  max-width: 1100px;
+  backdrop-filter: blur(14px);
+  z-index: 100;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.filter-menu.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.filter-menu label {
+  display: block;
+  font-weight: 600;
+  font-size: 22px;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.5px;
+}
+
+.filter-menu select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 18px;
+  color: #e8e9f3;
+  background-color: #20423f;
+  border: 1.5px solid rgba(232, 233, 243, 0.4);
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.filter-menu select:hover {
+  background-color: #285850;
+}
+
+.filter-menu select:focus {
+  border-color: #f26d3d;
+  box-shadow: 0 0 10px #f26d3d;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 /*Movie Cards*/
