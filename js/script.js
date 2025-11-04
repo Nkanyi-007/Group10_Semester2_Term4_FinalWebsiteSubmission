@@ -287,17 +287,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 $(document).ready(function() {
-    const $authContainer = $('#auth-container');
+    const $signupPageContainer = $('#signupPageContainer');
 
-    $('#signUp').on('click', function() {
-        $authContainer.addClass('right-panel-active');
+    $('#signUpbtn').on('click', function() {
+        $signupPageContainer.addClass('right-panel-active');
     });
 
     $('#logIn').on('click', function() {
-        $authContainer.removeClass('right-panel-active');
+        $signupPageContainer.removeClass('right-panel-active');
     });
 });
-
 //☆*: .｡. o(≧▽≦)o .｡.:*☆
 //HOMEPAGE AND SIGNUP PAGE SECTION DONE
 //Rhichelle's backend  ᓚᘏᗢ
@@ -348,6 +347,7 @@ function removeFromWatchlist(movieId) {
 // --- MOVIE LIBRARY------------------------------------------------------------------------------
 
 if (movieGrid) {
+    
   document.addEventListener("DOMContentLoaded", () => {
     const filterBtn = document.getElementById("filterBtn");
     const filterMenu = document.getElementById("filterMenu");
