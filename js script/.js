@@ -1,21 +1,31 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // movie.js
 
 const API_KEY = "90585727dddc037ab146b226b877e75c";
 
 // Build TMDB image URL
 =======
+=======
+>>>>>>> Stashed changes
 
 
 const API_KEY = "90585727dddc037ab146b226b877e75c";
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 function getImageUrl(path, size = "w500") {
   return path ? `https://image.tmdb.org/t/p/${size}${path}` : "fallback.jpg";
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // Fetch movie details
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -27,7 +37,11 @@ async function fetchMovie(movieId) {
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // Fetch cast
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -39,7 +53,11 @@ async function fetchCast(movieId) {
 }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // Render movie card
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -72,7 +90,11 @@ function renderMovie(movie, cast) {
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   const movieId = params.get("id") || "550"; // fallback: Fight Club
+=======
+  const movieId = params.get("id") || "550"; 
+>>>>>>> Stashed changes
 =======
   const movieId = params.get("id") || "550"; 
 >>>>>>> Stashed changes
