@@ -986,7 +986,7 @@ form label {
     text-align: center; /* Ensures text is centered */
 }
 
-.welcome-header {
+#displayName {
     font-family: "Orbitron", sans-serif;
     font-weight: 700;
     font-size: 2.5rem; /* Or any size you like */

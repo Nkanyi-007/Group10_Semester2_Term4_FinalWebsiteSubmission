@@ -22,41 +22,50 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 
-document.getElementById('signupPageContainer').addEventListener("submit", async (e)=>{
+document.addEventListener("DOMContentLoaded", () => {
 
-    e.preventDefault();
-    let email = document.getElementById('signUpEmail').value;
-    let password = document.getElementById('signUpPassword').value;
+    // --- Check if we are on the signup page ---
+    const signupForm = document.getElementById('signupForm');
+    const loginForm = document.getElementById('loginForm');
 
-    try{
-        await createUserWithEmailAndPassword(auth, email, password);
-        alert("account has been created successfully!");
-        window.location.href = "index.html";
+    // Only run the signup code if the signup form exists
+    if (signupForm) {
+        signupForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            let email = document.getElementById('signupEmail').value;
+            let password = document.getElementById('signupPassword').value;
+            let username = document.getElementById('signupUsername').value
 
+            try {
+                await createUserWithEmailAndPassword(auth, email, password);
+                alert("Account has been created successfully!");
+                window.location.href = "../index.html"; // Redirect to login page after successful signup
+localStorage.setItem("username", username);
+
+            } catch (error) {
+                alert(error.message);
+            }
+        });
     }
-    
-    catch (error){
-        alert(error.message);
+
+    // Only run the login code if the login form exists
+    if (loginForm) {
+        loginForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            let email = document.getElementById('logInEmail').value;
+            let password = document.getElementById('logInPassword').value;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                localStorage.setItem("username", email);
+                alert("Account has logged in successfully!");
+                // This path goes UP one folder to the root home.html
+                window.location.href = "../index.html"; 
+
+            } catch (error) {
+                alert(error.message);
+            }
+        });
     }
 
-});
-
-
-document.getElementById('loginContainer').addEventListener("submit", async (e)=>{
-
-    e.preventDefault();
-    let email = document.getElementById('logInEmail').value;
-    let password = document.getElementById('logInPassword').value;
-
-    try{
-        await signInWithEmailAndPassword(auth, email, password);
-        alert("account has log in successful!");
-        window.location.href = "../pages/library.html";
-
-    }
-    
-    catch (error){
-        alert(error.message);
-    }
-    
 });
