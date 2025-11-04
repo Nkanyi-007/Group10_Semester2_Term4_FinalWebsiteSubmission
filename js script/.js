@@ -1,13 +1,24 @@
+<<<<<<< Updated upstream
 // movie.js
 
 const API_KEY = "90585727dddc037ab146b226b877e75c";
 
 // Build TMDB image URL
+=======
+
+
+const API_KEY = "90585727dddc037ab146b226b877e75c";
+
+>>>>>>> Stashed changes
 function getImageUrl(path, size = "w500") {
   return path ? `https://image.tmdb.org/t/p/${size}${path}` : "fallback.jpg";
 }
 
+<<<<<<< Updated upstream
 // Fetch movie details
+=======
+
+>>>>>>> Stashed changes
 async function fetchMovie(movieId) {
   const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`;
   const res = await fetch(url);
@@ -15,7 +26,11 @@ async function fetchMovie(movieId) {
   return res.json();
 }
 
+<<<<<<< Updated upstream
 // Fetch cast
+=======
+
+>>>>>>> Stashed changes
 async function fetchCast(movieId) {
   const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`;
   const res = await fetch(url);
@@ -23,7 +38,11 @@ async function fetchCast(movieId) {
   return res.json();
 }
 
+<<<<<<< Updated upstream
 // Render movie card
+=======
+
+>>>>>>> Stashed changes
 function renderMovie(movie, cast) {
   const container = document.getElementById("movieCards");
   container.innerHTML = "";
@@ -52,7 +71,11 @@ function renderMovie(movie, cast) {
 // Main
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
+<<<<<<< Updated upstream
   const movieId = params.get("id") || "550"; // fallback: Fight Club
+=======
+  const movieId = params.get("id") || "550"; 
+>>>>>>> Stashed changes
 
   try {
     const movie = await fetchMovie(movieId);

@@ -329,7 +329,7 @@ body {
   color: #f5f5f5;
 }
 
-/* Footer container */
+
 .site-footer {
   background: #111;
   padding: 40px 20px;
@@ -340,7 +340,6 @@ body {
   gap: 32px;
 }
 
-/* Logo + tagline */
 .footer-logo {
   display: flex;
   flex-direction: column;
@@ -354,7 +353,7 @@ body {
   font-weight: 500;
 }
 
-/* Navigation links */
+
 .footer-nav {
   display: flex;
   flex-direction: column;
@@ -427,4 +426,19 @@ body {
   width: 100%;
   border-radius: 4px;
   display: block;
+}
+.trailer-button {
+  display: inline-block;
+  margin: 1rem 0;
+  padding: 0.6rem 1.2rem;
+  background: #000000fb;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.trailer-button:hover {
+  background:rgba(255, 255, 255, 0.15);
 }
