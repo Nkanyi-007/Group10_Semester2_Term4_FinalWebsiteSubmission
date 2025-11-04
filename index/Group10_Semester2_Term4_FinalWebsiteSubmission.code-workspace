@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Group10_Semester2_Term4_FinalWebsiteSubmission",
+		"liveServer.settings.port": 5501
+	}
+}
