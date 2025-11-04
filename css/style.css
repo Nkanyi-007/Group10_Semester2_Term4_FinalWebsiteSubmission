@@ -18,10 +18,7 @@ body {
   font-weight: 900;
   color: #8c1b2f;
 }
-#home-carousel-auto img {
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
+
 
 button.profile {
   background: none;
@@ -69,6 +66,9 @@ i.fa-solid.fa-magnifying-glass {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  padding-bottom: 20px;
 }
 
 #home-carousel-auto {
@@ -100,6 +100,7 @@ i.fa-solid.fa-magnifying-glass {
   font-family: "Orbitron", sans-serif;
   font-weight: 900;
   color: #8c1b2f;
+  
   font-size: 48px;
 }
 
@@ -356,6 +357,13 @@ i.fa-solid.fa-magnifying-glass {
 }
 
 
+.welcome-header {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 900;
+  color: #8c1b2f;
+  font-size: 48px;
+  margin-bottom: 20px;
+}
 
 .home-card-button,
 .movie-card-details-btn,
@@ -379,13 +387,13 @@ i.fa-solid.fa-magnifying-glass {
   backdrop-filter: blur(10px);
   outline: none;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 /* rgba(242, 109, 61, 0.677) */
 
 .home-card-button::before,
-.movie-card-details-btn::before,
-.movie-card-watchlist-btn::before {
+.movie-card-details-btn::before{
   position: absolute;
 
   top: 50%;
@@ -402,13 +410,23 @@ i.fa-solid.fa-magnifying-glass {
   width: 100px;
   height: 50px;
 }
+
+.home-card-button:hover,
+.movie-card-details-btn:hover,
+.movie-card-remove-btn:hover,
+.movie-card-watchlist-btn:hover {
+  color: #e6e8e6; 
+} 
+
 .home-card-button:hover::before,
 .movie-card-details-btn:hover::before,
-.movie-card-watchlist-btn:hover::before,
 .movie-card-remove-btn:hover::before {
   transform: translate(-50%, -50%) scale(1.3);
 }
 
+.movie-card-watchlist-btn:hover::before{
+  transform: translate(-50%, -50%) scale(1.5);
+}
 .movie-card-watchlist-btn::before {
   position: absolute;
 
@@ -416,7 +434,7 @@ i.fa-solid.fa-magnifying-glass {
   left: 50%;
 
   z-index: -1;
-  transform: translate(-50%, -50%) scale(0.8);
+  transform: translate(-50%, -50%) scale(1.2);
   transition: transform 0.5s ease;
   border-radius: 50px;
   background-color: #20423f;
@@ -451,6 +469,13 @@ i.fa-solid.fa-magnifying-glass {
   font-size: 32px;
 }
 
+#homeMovieHeader{
+  margin-bottom: 2rem;
+}
+
+#homePopularMovies{
+  margin-top: auto;
+}
 .signUpPage {
   background-image: url(../assets/img/DV\ background\ log\ in_sign\ up.png);
   height: 100vh;
@@ -679,7 +704,7 @@ button.ghost {
   box-shadow: none;
 }
 
-/* form {
+.formPanel{
   background-color: #202126;
   display: flex;
   flex-direction: column;
@@ -690,7 +715,7 @@ button.ghost {
   border-radius: 8px;
 }
 
-input {
+.formPanel input {
   background-color: rgba(255, 255, 255, 0.137);
   border: 1px solid #F26D3D;
   padding: 12px 18px;
@@ -704,7 +729,7 @@ input {
   color: #202126d2;
   font-family: "ff-good-headline-web-pro-ext", sans-serif;
 }
-input::placeholder { color: #9b9b9b; } */
+.formPanel input::placeholder { color: #9b9b9b; }
 
 .signupPageContainer{
   display: flex;
@@ -953,4 +978,35 @@ form label {
   
   
  
+}
+
+
+.headerTextContainer {
+    padding-top: 2%; /* Adds 2rem of space at the top */
+    text-align: center; /* Ensures text is centered */
+}
+
+.welcome-header {
+    font-family: "Orbitron", sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem; /* Or any size you like */
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin-bottom: 2%; /* Space below the name */
+}
+
+.recent-released {
+    color: #ddd;
+    font-size: 1.5rem;
+    font-family: "ff-good-headline-web-pro-ext", sans-serif;
+}
+
+/* This fixes the "cutoff" by adding space above your popular movies */
+#homePopularMovies {
+    
+    margin-top: 10%; 
+    margin-bottom: 2%;
+}
+.homePopularSection{
+  margin-bottom: 2%;
 }

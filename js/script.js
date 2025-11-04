@@ -5,7 +5,8 @@
 const HOME_API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MGI5ZjllOWI0YmRiMDNhYWZkYjFmM2FhM2YzYTFjNyIsIm5iZiI6MTc1NzY5MTA5MS4wNiwic3ViIjoiNjhjNDNjZDMyYWE0OTJlZWMxZDI2NTRkIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.3pBCgQ0z1aqjr_XqG-7ae9DlEGMCPykT5w9S1qh4pZw";
 const HOME_API_KEY = "60b9f9e9b4bdb03aafdb1f3aa3f3a1c7";
 const HOME_BASE_URL = "https://api.themoviedb.org/3";
-const HOME_IMG_BASE_URL = "https://image.tmdb.org/t/p/w500";
+const POSTER_BASE_URL = "https://image.tmdb.org/t/p/w500";      
+const BACKDROP_BASE_URL = "https://image.tmdb.org/t/p/w1280";
 
 const options = {
     method: 'GET',
@@ -32,7 +33,7 @@ function homeDisplayUpcoming(homeMoviesArray) {
 
     homeUpcomingContainer.innerHTML = '';
 
-    let homeUpcomingSlider = `<div id="home-carousel-auto" class="carousel slide" carousel slide="carousel">
+    let homeUpcomingSlider = `<div id="home-carousel-auto" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">`;
 
 
@@ -45,11 +46,12 @@ function homeDisplayUpcoming(homeMoviesArray) {
 
         return (`
             <div class="carousel-item ${active}">
-      <img src="${movie.image}" class="d-block w-100" >
+                <img src="${movie.image}" class="d-block w-100" >
 
-      
-        </div>
-    </div>`)
+                
+                
+            </div>
+        `)
 
     }).join('');
 
@@ -139,7 +141,7 @@ async function homeDisplayUpcomingMovies() {
 
         const movies = data.results.map(apiMovie => {
             const imagePath = apiMovie.backdrop_path;
-            const image = imagePath ? `${HOME_IMG_BASE_URL}${imagePath}` : 'https://via.placeholder.com/500x750?text=No+Image';
+            const image = imagePath ? `${BACKDROP_BASE_URL}${imagePath}` : 'https://via.placeholder.com/500x750?text=No+Image';
 
             return new homeMovie(
                 image,
@@ -173,7 +175,7 @@ async function homeDisplayFetchPopularMovies() {
 
         const movies = data.results.map(apiMovie => {
             const imagePath = apiMovie.poster_path;
-            const image = imagePath ? `${HOME_IMG_BASE_URL}${imagePath}` : 'https://via.placeholder.com/500x750?text=No+Image';
+            const image = imagePath ? `${POSTER_BASE_URL}${imagePath}` : 'https://via.placeholder.com/500x750?text=No+Image';
 
             return new homeMovie(
                 image,
@@ -210,7 +212,7 @@ async function homeDisplayFetchTopRatedMovies() {
 
         const movies = data.results.map(apiMovie => {
             const imagePath = apiMovie.poster_path;
-            const image = imagePath ? `${HOME_IMG_BASE_URL}${imagePath}` : 'https://via.placeholder.com/500x750?text=No+Image';
+            const image = imagePath ? `${POSTER_BASE_URL}${imagePath}` : 'https://via.placeholder.com/500x750?text=No+Image';
 
             return new homeMovie(
                 image,
