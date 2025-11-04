@@ -30,8 +30,8 @@
 <div class="signupPageContainer" id="signupPageContainer">
     <div class="signupContainer" id="signupContainer">
         <form action="#">
-        <h1 class="signupH">Welcome!
-            Create Account</h1>
+        <h1 class="signupH">Welcome! <br>
+            Please enter your details to create an Account</h1>
        <label for="signupEmail">Email</label>
     <input id="signupEmail" type="email" placeholder="Email" />
     
@@ -52,11 +52,11 @@
       <form action="#">
         <h4 class="loginHW">Welcome back! <br>Please enter your details to log in.</h4>
           <h4 class="loginH">Log In</h4>
-        <label for="loginUsername">Username</label>
-      <input id="loginUsername" type="text" placeholder="Username" />
-      
-      <label for="loginPassword">Password</label>
-      <input id="loginPassword" type="password" placeholder="Password" />
+        <label for="logInEmail">Email</label>
+      <input id="logInEmail" type="text" placeholder="Email" />
+
+      <label for="logInPassword">Password</label>
+      <input id="logInPassword" type="password" placeholder="Password" />
         <button type="submit" id="logInbtn">Log In</button>
       </form>
     </div>
@@ -64,7 +64,7 @@
     <div class="overlayContainer">
       <div class="overlay">
         <div class="overlayPanel overlayLeft">
-          <h1>Are you ready for more perfection...and fewer pixels with P1xieFlix?</h1>
+          <p class="sloganLogIn">Are you ready for more perfection...and fewer pixels with P1xieFlix?</p>
           <h1>Have an account?</h1>
           <p>Please log in to your account</p>
           <button class="ghost" id="logIn">Log In</button>
@@ -88,6 +88,7 @@
 
 
     <script src="../js/script.js"></script>
+    <script type="module" src="../js/firebase.js"></script>
 </body>
 
 
