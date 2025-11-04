@@ -26,7 +26,7 @@ class homeMovie {
         this.popularity = popularity;
     }
 }
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", () => {
 if (document.getElementById("homeMovieHeader")) {
 function homeDisplayUpcoming(homeMoviesArray) {
     const homeUpcomingContainer = document.getElementById('homeMovieHeader');
@@ -354,23 +354,42 @@ function goToDetails(movieId) {
 
 function addToWatchlist(movie) {
     let watchList = JSON.parse(localStorage.getItem("watchList")) || [];
-
-    if (watchList.some((m) => m.id === movie.id)) {
+    if (watchList.some((m) => m.id == movie.id)) {
         alert(`${movie.title} is already in your Watchlist!`);
-        return;
-    }
-
+        return;}
     watchList.push(movie);
     localStorage.setItem("watchList", JSON.stringify(watchList));
     alert(`${movie.title} added to your Watchlist!`);
 }
+function addToWatchlistFromElement(button) {
+    const card = button.closest('.card, .movie-card');
+    const title = card.querySelector('h5, h3')?.textContent.trim();
+    const image = card.querySelector('img')?.src;
+    const movieId = card.dataset.movieId;
 
-function removeFromWatchlist(movieId) {
-    let list = JSON.parse(localStorage.getItem("watchList")) || [];
-    list = list.filter(m => m.id !== movieId);
-    localStorage.setItem("watchList", JSON.stringify(list));
-    location.reload(); 
+    const movie = {
+        id: movieId,
+        title: title,
+        image: image
+    };
+    addToWatchlist(movie);
 }
+
+function removeFromWatchlistFromElement(button) {
+    const card = button.closest('.card, .movie-card');
+    const movieId = card.dataset.movieId;
+
+    let watchList = JSON.parse(localStorage.getItem("watchList")) || [];
+    watchList = watchList.filter(m => m.id != movieId);
+    localStorage.setItem("watchList", JSON.stringify(watchList));
+
+    alert(`${card.querySelector('h3, h5').textContent} removed from your Watchlist!`);
+    location.reload();
+}
+
+    
+
+
 
 
 // --- MOVIE LIBRARY------------------------------------------------------------------------------
@@ -385,34 +404,49 @@ const movieGrid = document.getElementById("movieGrid");
     const genreSelect = document.getElementById("genreSelect");
     const yearSelect = document.getElementById("yearSelect");
     const ratingSelect = document.getElementById("ratingSelect");
-    
-  document.addEventListener("DOMContentLoaded", () => {
-    
-    async function loadMovies(url) {
+
+    const filters = {
+      genre: "",
+      year: "",
+      rating: "",
+      search: "",
+    };
+
+    function buildURL() {
+            const params = new URLSearchParams({ api_key: HOME_API_KEY, language: "en-US" });
+            if (filters.genre) params.append("with_genres", filters.genre);
+            if (filters.year) params.append("primary_release_year", filters.year);
+            if (filters.rating) params.append("vote_average.gte", filters.rating);
+            if (filters.search) {
+                params.append("query", filters.search);
+                return `${HOME_BASE_URL}/search/movie?${params.toString()}`;
+            }
+            return `${HOME_BASE_URL}/discover/movie?${params.toString()}`;
+        }
+
+        async function loadMovies() {
+            const url = buildURL(); 
             try {
-                // Use your global 'options' const for the fetch
                 const res = await fetch(url, options); 
                 const data = await res.json();
-                if (data.results) {
-                    displayMovies(data.results.slice(0, 25)); // Apply limit
-                }
+                displayMovies(data.results.slice(0, 25));
             } catch (err) {
-                console.log("Fetch error:", err);
+                console.error("Fetch error:", err);
             }
         }
 
         function displayMovies(movies) {
-            movieGrid.innerHTML = ""; // Clear the grid
+            movieGrid.innerHTML = "";
             movies.forEach((movie) => {
                 const col = document.createElement("div");
                 col.classList.add("col-lg-3", "col-md-4", "col-sm-6", "mb-4");
                 col.innerHTML = `
-                    <div class="movie-card">
-                        <img src="${movie.poster_path ? POSTER_BASE_URL + movie.poster_path : "https://via.placeholder.com/500x750?text=No+Poster"}" alt="${movie.title}">
+                    <div class="movie-card" data-movie-id="${movie.id}">
+                        <img src="${movie.poster_path ? POSTER_BASE_URL + movie.poster_path : "https...text=No+Poster"}" alt="${movie.title}">
                         <h3>${movie.title}</h3>
                         <div class="d-flex justify-content-center gap-2 mt-2">
                             <button class="movie-card-details-btn btn btn-sm" onclick="goToDetails(${movie.id})">Details</button>
-                            <button class="movie-card-watchlist-btn btn btn-sm" onclick='addToWatchlist(${JSON.stringify(movie)})'>Add to Watchlist</button>
+                            <button class="movie-card-watchlist-btn btn btn-sm" onclick="addToWatchlistFromElement(this)">Add to Watchlist</button>
                         </div>
                     </div>
                 `;
@@ -421,48 +455,42 @@ const movieGrid = document.getElementById("movieGrid");
         }
 
         async function loadGenres() {
-           
-            const res = await fetch(`${HOME_BASE_URL}/genre/movie/list?api_key=${HOME_API_KEY}`);
-            const data = await res.json();
-            if (genreSelect) {
+            try {
+                const res = await fetch(`${HOME_BASE_URL}/genre/movie/list?api_key=${HOME_API_KEY}`, options);
+                const data = await res.json();
                 data.genres.forEach((genre) => {
                     const option = document.createElement("option");
                     option.value = genre.id;
                     option.textContent = genre.name;
                     genreSelect.appendChild(option);
                 });
+            } catch (err) {
+                console.error("Error loading genres:", err);
             }
         }
 
-
-    filterBtn.addEventListener("click", () => {
-      filterMenu.classList.toggle("active");
-    });
-
-    if (filterType) {
+        if(filterBtn) {
+            filterBtn.addEventListener("click", () => filterMenu.classList.toggle("active"));
+        }
+        if(filterType) {
             filterType.addEventListener("change", () => {
-                [genreFilter, yearFilter, ratingFilter].forEach(
-                    (el) => el && (el.style.display = "none")
-                );
+                [genreFilter, yearFilter, ratingFilter].forEach(el => el.style.display = "none");
                 if (filterType.value === "genre") genreFilter.style.display = "block";
                 if (filterType.value === "year") yearFilter.style.display = "block";
                 if (filterType.value === "rating") ratingFilter.style.display = "block";
                 if (filterType.value === "all") {
-                    loadMovies(`${HOME_BASE_URL}/movie/popular?api_key=${HOME_API_KEY}`);
+                    filters.genre = filters.year = filters.rating = "";
+                    loadMovies();
                 }
             });
         }
-
-       if (genreSelect) {
+        if(genreSelect) {
             genreSelect.addEventListener("change", (e) => {
-                const genreId = e.target.value;
-                if (genreId) {
-                    loadMovies(`${HOME_BASE_URL}/discover/movie?api_key=${HOME_API_KEY}&with_genres=${genreId}`);
-                }
+                filters.genre = e.target.value;
+                loadMovies();
             });
         }
-        
-        if (yearSelect) {
+        if(yearSelect) {
             const currentYear = new Date().getFullYear();
             for (let y = currentYear; y >= currentYear - 50; y--) {
                 const option = document.createElement("option");
@@ -471,67 +499,53 @@ const movieGrid = document.getElementById("movieGrid");
                 yearSelect.appendChild(option);
             }
             yearSelect.addEventListener("change", (e) => {
-                const year = e.target.value;
-                if (year) {
-                    loadMovies(`${HOME_BASE_URL}/discover/movie?api_key=${HOME_API_KEY}&primary_release_year=${year}`);
-                }
+                filters.year = e.target.value;
+                loadMovies();
             });
         }
-
-        if (ratingSelect) {
+        if(ratingSelect) {
             ratingSelect.addEventListener("change", (e) => {
-                const rating = e.target.value;
-                if (rating) {
-                    loadMovies(`${HOME_BASE_URL}/discover/movie?api_key=${HOME_API_KEY}&vote_average.gte=${rating}`);
-                }
+                filters.rating = e.target.value;
+                loadMovies();
             });
         }
-        loadMovies(`${HOME_BASE_URL}/movie/popular?api_key=${HOME_API_KEY}`);
+        
         loadGenres();
-    });
-}
-   
-
-    const filters = {
-      genre: null,
-      year: null,
-      rating: null,
-      search: null  
-    };
-
-
-
-// --- WATCHLIST ---------------------------------------------------------------------------------
-
-if (document.getElementById("watchlistGrid")) {
-
-    const watchlistContainer = document.getElementById("watchlistGrid"); 
-    let watchList = JSON.parse(localStorage.getItem("watchList")) || []; 
-
-    if (watchList.length === 0) {
-        watchlistContainer.innerHTML = "<p class='watchlist-message text-center mt-5 w-100'>No movies in your watchlist yet!</p>";
-    } else {
-        watchList.forEach(movie => {
-            const col = document.createElement("div");
-            // Use your Bootstrap grid classes
-            col.classList.add("col-lg-3", "col-md-4", "col-sm-6", "mb-4"); 
-            col.innerHTML = `
-                <div class="movie-card">
-                    <img src="${
-                        // Use POSTER_BASE_URL and check for movie.image
-                        movie.image ? movie.image : (movie.poster_path ? POSTER_BASE_URL + movie.poster_path : "https://via.placeholder.com/500x750?text=No+Poster")
-                    }" alt="${movie.title}">
-                    <h3>${movie.title}</h3>
-                    <div class="d-flex justify-content-center gap-2 mt-2">
-                        <button class="movie-card-details-btn btn btn-sm" onclick="goToDetails(${movie.id})">Details</button>
-                        <button class="movie-card-remove-btn btn btn-sm" onclick="removeFromWatchlist(${movie.id})">Remove</button>
-                    </div>
-                </div>
-            `;
-            watchlistContainer.appendChild(col);
-        });
+        loadMovies(); 
     }
-}
+
+
+// --- WATCHLIST PAGE------------------------------------------------------------------------------
+    
+
+    
+if (document.getElementById("watchlistGrid")) {
+        
+        const watchlistContainer = document.getElementById("watchlistGrid"); 
+        let watchList = JSON.parse(localStorage.getItem("watchList")) || []; 
+
+        if (watchList.length === 0) {
+            watchlistContainer.innerHTML = "<p class='watchlist-message text-center mt-5 w-100'>No movies in your watchlist yet!</p>";
+        } else {
+            watchList.forEach(movie => {
+                const col = document.createElement("div");
+                col.classList.add("col-lg-3", "col-md-4", "col-sm-6", "mb-4"); 
+                
+                col.innerHTML = `
+                    <div class="movie-card" data-movie-id="${movie.id}">
+                        <img src="${movie.image || 'https://via.placeholder.com/500x750?text=No+Poster'}" alt="${movie.title}">
+                        <h3>${movie.title}</h3>
+                        <div class="d-flex justify-content-center gap-2 mt-2">
+                            <button class="movie-card-details-btn btn btn-sm" onclick="goToDetails(${movie.id})">Details</button>
+                            <button class="movie-card-remove-btn btn btn-sm" onclick="removeFromWatchlistFromElement(this)">Remove</button>
+                        </div>
+                    </div>
+                `;
+                watchlistContainer.appendChild(col);
+            });
+        }
+    }
+    
 
 //00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 //00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
