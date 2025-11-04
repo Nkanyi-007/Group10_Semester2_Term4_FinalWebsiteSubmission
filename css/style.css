@@ -65,29 +65,9 @@ i.fa-solid.fa-magnifying-glass {
   color: #f26d3d;
 }
 
-/* .homeHeader.noise::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cfilter id='noise' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeBlend mode='screen'/%3E%3C/filter%3E%3Crect width='500' height='500' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
-    mix-blend-mode: soft-light;
-    pointer-events: none;
-} */
-
-/* .profile {
-    background: none;
-    border: none;
-    color: #8c1b2f;
-    filter: invert(14%) sepia(73%) saturate(3190%) hue-rotate(335deg) brightness(86%) contrast(92%);
-} */
-
 #homeMovieHeader {
   display: flex;
   flex-direction: column;
-
   align-items: center;
 }
 
@@ -290,7 +270,7 @@ i.fa-solid.fa-magnifying-glass {
   border: 1px solid rgba(232, 233, 243, 0.5);
   border-radius: 8px;
   background-color: rgba(232, 233, 243, 0.215);
-  color: #202126;
+  color: #e6e8e6;
 
   letter-spacing: 1px;
   -webkit-backdrop-filter: blur(10px);
@@ -392,7 +372,7 @@ i.fa-solid.fa-magnifying-glass {
   border: 1px solid rgba(32, 33, 38, 0.197);
   border-radius: 8px;
   background-color: rgba(32, 33, 38, 0.137);
-  color: #202126;
+  color: #e6e8e6;
 
   letter-spacing: 1px;
   -webkit-backdrop-filter: blur(10px);
@@ -699,16 +679,14 @@ button.ghost {
   box-shadow: none;
 }
 
-form {
+/* form {
   background-color: #202126;
   display: flex;
   flex-direction: column;
   padding: 0 50px;
   height: 100%;
   
-  /* justify-content: center;
-  align-items: center;
-  text-align: center; */
+  
   border-radius: 8px;
 }
 
@@ -726,7 +704,7 @@ input {
   color: #202126d2;
   font-family: "ff-good-headline-web-pro-ext", sans-serif;
 }
-input::placeholder { color: #9b9b9b; }
+input::placeholder { color: #9b9b9b; } */
 
 .signupPageContainer{
   display: flex;
