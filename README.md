@@ -90,7 +90,9 @@ If the movie ID isn’t known, the app uses /search/movie?query=TITLE to look up
 
 **Built With**
 
--HTML
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+
+![Firebase](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)
 
 ![CSS](https://img.shields.io/badge/-CSS-663399?style=for-the-badge&logo=css&logoColor=white)
 
@@ -98,7 +100,7 @@ If the movie ID isn’t known, the app uses /search/movie?query=TITLE to look up
 
 ![Bootstrap](https://img.shields.io/badge/-Bootstrap-41E0FD?style=for-the-badge&logo=bootstrap&logoColor=white)
 
--JQuery
+![Jquery](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
 
 
 
