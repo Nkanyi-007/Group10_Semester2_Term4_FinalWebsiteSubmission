@@ -1,5 +1,5 @@
-const TMDB_KEY = "YOUR_TMDB_API_KEY";   // Replace with your TMDB key
-const OMDB_KEY = "YOUR_OMDB_API_KEY";   // Replace with your OMDb key
+const TMDB_KEY = "90585727dddc037ab146b226b877e75c";   // Replace with your TMDB key
+const OMDB_KEY = "40ccbe12";   // Replace with your OMDb key
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMG_BASE = "https://image.tmdb.org/t/p/w500";
 
