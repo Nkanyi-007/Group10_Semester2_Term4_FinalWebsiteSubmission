@@ -96,7 +96,7 @@ If the movie ID isn’t known, the app uses /search/movie?query=TITLE to look up
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-![Bootstrap](https://img.shields.io/badge/-ReactBootstrap-41E0FD?style=for-the-badge&logo=reactbootstrap&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/-Bootstrap-41E0FD?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 -JQuery
 
