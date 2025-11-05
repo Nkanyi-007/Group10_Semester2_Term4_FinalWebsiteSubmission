@@ -651,6 +651,7 @@ button.ghost {
   margin: auto;
   height: 100vh;
   overflow: hidden;
+  
 }
 
 .signupContainer, .loginContainer {
@@ -674,7 +675,7 @@ button.ghost {
   transform: translateY(-50%);
   width: 80%;
   height: 72%;
-  background-color: #20423fbd;
+  background-color: #8c1b30bc;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(255, 255, 255, 0.6) ;
   z-index: 1;

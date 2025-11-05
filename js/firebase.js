@@ -25,8 +25,8 @@ const auth = getAuth(app);
 document.addEventListener("DOMContentLoaded", () => {
 
     
-    const signupForm = document.getElementById('signupForm');
-    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupPageContainer');
+    const loginForm = document.getElementById('loginContainer');
 
   
     if (signupForm) {

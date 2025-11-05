@@ -26,7 +26,6 @@ class homeMovie {
         this.popularity = popularity;
     }
 }
-document.addEventListener("DOMContentLoaded", function()  {
     function showName() {
             let savedName = localStorage.getItem("userName");
             // We must check if the element exists before trying to use it
@@ -261,10 +260,10 @@ main();
 }
 
 //displaying the username 
-if (document.getElementById("loginForm") || document.getElementById("signupPageContainer")) {
+if (document.getElementById("loginContainer") || document.getElementById("signupPageContainer")) {
 let username;
 
-document.getElementById("loginForm").addEventListener("submit", e =>{
+document.getElementById("loginContainer").addEventListener("submit", e =>{
     e.preventDefault();
     username = document.getElementById("logInEmail").value;
 
@@ -277,8 +276,9 @@ document.getElementById("loginForm").addEventListener("submit", e =>{
 //( •̀ ω •́ )✧
 //✧✧✧✧✧✧✧✧ SIGNUP/LOGIN PAGE CODE ✧✧✧✧✧✧✧✧ᓚᘏᗢ//
 if (document.getElementById("signupPageContainer")) {
+        console.log("RUNNINFFFFFFF");
         
-      
+        
         const signUpButton = document.getElementById('signUp');
         const logInButton = document.getElementById('logIn');
         const container = document.getElementById('signupPageContainer'); 
@@ -323,28 +323,25 @@ const searchInput = document.getElementById("searchInput");
 function goToDetails(movieId) {
     window.location.href = `movie.html?id=${movieId}`;
 }
-
-function addToWatchlist(movie) {
-    let watchList = JSON.parse(localStorage.getItem("watchList")) || [];
-    if (watchList.some((m) => m.id == movie.id)) {
-        alert(`${movie.title} is already in your Watchlist!`);
-        return;}
-    watchList.push(movie);
-    localStorage.setItem("watchList", JSON.stringify(watchList));
-    alert(`${movie.title} added to your Watchlist!`);
-}
 function addToWatchlistFromElement(button) {
+    console.log("Adding to watch list");
+    
     const card = button.closest('.card, .movie-card');
     const title = card.querySelector('h5, h3')?.textContent.trim();
     const image = card.querySelector('img')?.src;
-    const movieId = card.dataset.movieId;
+    const movieId = card.dataset.movieId; // get the movie id
 
     const movie = {
         id: movieId,
         title: title,
         image: image
     };
+
     addToWatchlist(movie);
+
+    button.style.display = "none";
+    const removeButton = card.querySelector('.movie-card-remove-btn');
+    if (removeButton) removeButton.style.display = "inline-block";
 }
 
 function removeFromWatchlistFromElement(button) {
@@ -356,8 +353,53 @@ function removeFromWatchlistFromElement(button) {
     localStorage.setItem("watchList", JSON.stringify(watchList));
 
     alert(`${card.querySelector('h3, h5').textContent} removed from your Watchlist!`);
+
     location.reload();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function addToWatchlist(movie) {
+    let watchList = JSON.parse(localStorage.getItem("watchList")) || [];
+
+    if (watchList.some((m) => m.id === movie.id)) {
+        alert(`${movie.title} is already in your Watchlist!`);
+
+        return;
+    }
+
+    watchList.push(movie);
+    localStorage.setItem("watchList", JSON.stringify(watchList));
+    alert(`${movie.title} added to your Watchlist!`);
+
+}
+
+function removeFromWatchlist(movieId) {
+    let list = JSON.parse(localStorage.getItem("watchList")) || [];
+    list = list.filter(m => m.id !== movieId);
+    localStorage.setItem("watchList", JSON.stringify(list));
+    location.reload();
+}
+
 
     
 
@@ -412,13 +454,20 @@ const movieGrid = document.getElementById("movieGrid");
             movies.forEach((movie) => {
                 const col = document.createElement("div");
                 col.classList.add("col-lg-3", "col-md-4", "col-sm-6", "mb-4");
+                const watchList = JSON.parse(localStorage.getItem("watchList")) || [];
+const isInWatchlist = watchList.some(m => m.id == movie.id);
+                
+const addBtnStyle = isInWatchlist ? "display:none;" : "";
+const removeBtnStyle = isInWatchlist ? "display:inline-block;" : "display:none;";
+
                 col.innerHTML = `
                     <div class="movie-card" data-movie-id="${movie.id}">
                         <img src="${movie.poster_path ? POSTER_BASE_URL + movie.poster_path : "https...text=No+Poster"}" alt="${movie.title}">
                         <h3>${movie.title}</h3>
                         <div class="d-flex justify-content-center gap-2 mt-2">
                             <button class="movie-card-details-btn btn btn-sm" onclick="goToDetails(${movie.id})">Details</button>
-                            <button class="movie-card-watchlist-btn btn btn-sm" onclick="addToWatchlistFromElement(this)">Add to Watchlist</button>
+                            <button class="movie-card-watchlist-btn btn btn-sm"  onclick="addToWatchlistFromElement(this)" style="${addBtnStyle}">Add to Watchlist</button>
+                            <button class="movie-card-remove-btn btn btn-sm" onclick="removeFromWatchlistFromElement(this)" style="${removeBtnStyle}">Remove from Watchlist</button>
                         </div>
                     </div>
                 `;
@@ -499,6 +548,8 @@ if (document.getElementById("watchlistGrid")) {
         if (watchList.length === 0) {
             watchlistContainer.innerHTML = "<p class='watchlist-message text-center mt-5 w-100'>No movies in your watchlist yet!</p>";
         } else {
+            console.log(watchList);
+            
             watchList.forEach(movie => {
                 const col = document.createElement("div");
                 col.classList.add("col-lg-3", "col-md-4", "col-sm-6", "mb-4"); 
@@ -517,7 +568,6 @@ if (document.getElementById("watchlistGrid")) {
             });
         }
     }
-    });
 
 //00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 //00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -525,85 +575,85 @@ if (document.getElementById("watchlistGrid")) {
 
 
 
-const TMDB_KEY = "90585727dddc037ab146b226b877e75c";   // Replace with your TMDB key
-const OMDB_KEY = "40ccbe12";   // Replace with your OMDb key
-const MOVIE_ID = "132";                 // Example: The Godfather
+// const TMDB_KEY = "90585727dddc037ab146b226b877e75c";   // Replace with your TMDB key
+// const OMDB_KEY = "40ccbe12";   // Replace with your OMDb key
+// const MOVIE_ID = "132";                 // Example: The Godfather
 
-const IMG_BASE = "https://image.tmdb.org/t/p/w500";
+// const IMG_BASE = "https://image.tmdb.org/t/p/w500";
 
-async function loadMovie() {
-  try {
-    // Fetch movie details from TMDB
-    const movieRes = await fetch(`${BASE_URL}/movie/${MOVIE_ID}?api_key=${TMDB_KEY}&language=en-US`);
-    const movie = await movieRes.json();
+// async function loadMovie() {
+//   try {
+//     // Fetch movie details from TMDB
+//     const movieRes = await fetch(`${BASE_URL}/movie/${MOVIE_ID}?api_key=${TMDB_KEY}&language=en-US`);
+//     const movie = await movieRes.json();
 
-    // Fetch cast from TMDB
-    const castRes = await fetch(`${BASE_URL}/movie/${MOVIE_ID}/credits?api_key=${TMDB_KEY}&language=en-US`);
-    const credits = await castRes.json();
+//     // Fetch cast from TMDB
+//     const castRes = await fetch(`${BASE_URL}/movie/${MOVIE_ID}/credits?api_key=${TMDB_KEY}&language=en-US`);
+//     const credits = await castRes.json();
 
-    // Fetch IMDb rating from OMDb using imdb_id
-    let imdbRating = "N/A";
-    if (movie.imdb_id) {
-      const omdbRes = await fetch(`https://www.omdbapi.com/?i=${movie.imdb_id}&apikey=${OMDB_KEY}`);
-      const omdbData = await omdbRes.json();
-      imdbRating = omdbData.imdbRating || "N/A";
-    }
+//     // Fetch IMDb rating from OMDb using imdb_id
+//     let imdbRating = "N/A";
+//     if (movie.imdb_id) {
+//       const omdbRes = await fetch(`https://www.omdbapi.com/?i=${movie.imdb_id}&apikey=${OMDB_KEY}`);
+//       const omdbData = await omdbRes.json();
+//       imdbRating = omdbData.imdbRating || "N/A";
+//     }
 
-    // Build cast HTML (limit to 8)
-    const castHTML = credits.cast.slice(0, 8).map(actor => `
-      <div class="cast-member">
-        <img src="${actor.profile_path ? IMG_BASE + actor.profile_path : 'https://via.placeholder.com/90x135?text=No+Image'}" alt="${actor.name}">
-        <div>${actor.name}</div>
-      </div>
-    `).join("");
+//     // Build cast HTML (limit to 8)
+//     const castHTML = credits.cast.slice(0, 8).map(actor => `
+//       <div class="cast-member">
+//         <img src="${actor.profile_path ? IMG_BASE + actor.profile_path : 'https://via.placeholder.com/90x135?text=No+Image'}" alt="${actor.name}">
+//         <div>${actor.name}</div>
+//       </div>
+//     `).join("");
 
-    // Build the movie card
-    const cardHTML = `
-      <div class="individual-movie-card">
-        <div class="poster">
-          <img src="${IMG_BASE + movie.poster_path}" alt="${movie.title}">
-        </div>
-        <div class="details">
-          <h2 class="title">${movie.title}</h2>
-          <p><strong>IMDb Rating:</strong> ⭐ ${imdbRating}</p>
-          <p class="overview">${movie.overview}</p>
-          <h3>Cast</h3>
-          <div class="cast">${castHTML}</div>
-        </div>
-      </div>
-    `;
+//     // Build the movie card
+//     const cardHTML = `
+//       <div class="individual-movie-card">
+//         <div class="poster">
+//           <img src="${IMG_BASE + movie.poster_path}" alt="${movie.title}">
+//         </div>
+//         <div class="details">
+//           <h2 class="title">${movie.title}</h2>
+//           <p><strong>IMDb Rating:</strong> ⭐ ${imdbRating}</p>
+//           <p class="overview">${movie.overview}</p>
+//           <h3>Cast</h3>
+//           <div class="cast">${castHTML}</div>
+//         </div>
+//       </div>
+//     `;
 
-    // Inject into the fluid container
-    document.getElementById("individualMovieCards").innerHTML = cardHTML;
+//     // Inject into the fluid container
+//     document.getElementById("individualMovieCards").innerHTML = cardHTML;
 
-  } catch (err) {
-    console.error("Error loading movie:", err);
-  }
-}
+//   } catch (err) {
+//     console.error("Error loading movie:", err);
+//   }
+// }
 
-loadMovie();
+// loadMovie();
 
 
 
-// Search for a movie by name
-async function searchMovie(query) {
-  try {
-    const searchRes = await fetch(`${BASE_URL}/search/movie?api_key=${TMDB_KEY}&language=en-US&query=${encodeURIComponent(query)}`);
-    const searchData = await searchRes.json();
+// // Search for a movie by name
+// async function searchMovie(query) {
+//   try {
+//     const searchRes = await fetch(`${BASE_URL}/search/movie?api_key=${TMDB_KEY}&language=en-US&query=${encodeURIComponent(query)}`);
+//     const searchData = await searchRes.json();
 
-    if (searchData.results && searchData.results.length > 0) {
-      // Always grab the first result’s ID
-      const firstResult = searchData.results[0];
-      await loadMovie(firstResult.id);
-    } else {
-      document.getElementById("movieCards").innerHTML = `<p>No results found for "${query}".</p>`;
-    }
-  } catch (err) {
-    console.error("Error searching movie:", err);
-  }
-}
+//     if (searchData.results && searchData.results.length > 0) {
+//       // Always grab the first result’s ID
+//       const firstResult = searchData.results[0];
+//       await loadMovie(firstResult.id);
+//     } else {
+//       document.getElementById("movieCards").innerHTML = `<p>No results found for "${query}".</p>`;
+//     }
+//   } catch (err) {
+//     console.error("Error searching movie:", err);
+//   }
+// }
 
-document.getElementById("searchBtn").addEventListener("click", () => {
-  const query = document.getElementById("searchInput").value.trim();
-  if (query) searchMovie(query);
-});
+// document.getElementById("searchBtn").addEventListener("click", () => {
+//   const query = document.getElementById("searchInput").value.trim();
+//   if (query) searchMovie(query);
+// });
