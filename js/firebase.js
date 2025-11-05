@@ -24,11 +24,11 @@ const auth = getAuth(app);
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // --- Check if we are on the signup page ---
+    
     const signupForm = document.getElementById('signupForm');
     const loginForm = document.getElementById('loginForm');
 
-    // Only run the signup code if the signup form exists
+  
     if (signupForm) {
         signupForm.addEventListener("submit", async (e) => {
             e.preventDefault();
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
                 await createUserWithEmailAndPassword(auth, email, password);
                 alert("Account has been created successfully!");
-                window.location.href = "../index.html"; // Redirect to login page after successful signup
+                window.location.href = "../index.html"; 
 localStorage.setItem("username", username);
 
             } catch (error) {
@@ -48,7 +48,7 @@ localStorage.setItem("username", username);
         });
     }
 
-    // Only run the login code if the login form exists
+    
     if (loginForm) {
         loginForm.addEventListener("submit", async (e) => {
             e.preventDefault();
@@ -59,7 +59,7 @@ localStorage.setItem("username", username);
                 await signInWithEmailAndPassword(auth, email, password);
                 localStorage.setItem("username", email);
                 alert("Account has logged in successfully!");
-                // This path goes UP one folder to the root home.html
+                
                 window.location.href = "../index.html"; 
 
             } catch (error) {

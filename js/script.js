@@ -26,7 +26,17 @@ class homeMovie {
         this.popularity = popularity;
     }
 }
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function()  {
+    function showName() {
+            let savedName = localStorage.getItem("userName");
+            // We must check if the element exists before trying to use it
+            if (document.getElementById('displayName')) { 
+                document.getElementById('displayName').innerHTML = "Welcome " + savedName;
+            }
+        }
+
+    showName();
+
 if (document.getElementById("homeMovieHeader")) {
 function homeDisplayUpcoming(homeMoviesArray) {
     const homeUpcomingContainer = document.getElementById('homeMovieHeader');
@@ -248,8 +258,8 @@ async function main() {
 
 main();
 
-showName();
 }
+
 //displaying the username 
 if (document.getElementById("loginForm") || document.getElementById("signupPageContainer")) {
 let username;
@@ -266,65 +276,27 @@ document.getElementById("loginForm").addEventListener("submit", e =>{
 
 //( •̀ ω •́ )✧
 //✧✧✧✧✧✧✧✧ SIGNUP/LOGIN PAGE CODE ✧✧✧✧✧✧✧✧ᓚᘏᗢ//
-document.addEventListener("DOMContentLoaded", function() {
-  
-  const signUpButton = document.getElementById('signUp');
-  const logInButton = document.getElementById('logIn');
-  const container = document.getElementById('signupPageContainer');
-
-  // Mobile toggles
-  const mobileSignUpButton = document.getElementById('mobileSignUp');
-  const mobileLogInButton = document.getElementById('mobileLogIn');
-
-  // Desktop Toggles
-  if (signUpButton) {
-    signUpButton.addEventListener('click', () => {
-      container.classList.add("right-panel-active");
-    });
-  }
-
-  if (logInButton) {
-    logInButton.addEventListener('click', () => {
-      container.classList.remove("right-panel-active");
-    });
-  }
-  
-  // Mobile Toggles
-  if (mobileSignUpButton) {
-    mobileSignUpButton.addEventListener('click', (e) => {
-      e.preventDefault(); 
-      container.classList.add("right-panel-active");
-    });
-  }
-  
-  if (mobileLogInButton) {
-    mobileLogInButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      container.classList.remove("right-panel-active");
-    });
-  }
-
-});
-
-    const $signupPageContainer = $('#signupPageContainer');
-
-    $('#signUpbtn').on('click', function() {
-        $signupPageContainer.addClass('right-panel-active');
-    });
-
-    $('#logIn').on('click', function() {
-        $signupPageContainer.removeClass('right-panel-active');
-    });
-
-}
-function showName() {
-        let savedName = localStorage.getItem("userName");
-        // We must check if the element exists before trying to use it
-        if (document.getElementById('displayName')) { 
-            document.getElementById('displayName').innerHTML = "Welcome " + savedName;
+if (document.getElementById("signupPageContainer")) {
+        
+      
+        const signUpButton = document.getElementById('signUp');
+        const logInButton = document.getElementById('logIn');
+        const container = document.getElementById('signupPageContainer'); 
+        if (signUpButton) {
+            signUpButton.addEventListener('click', () => container.classList.add("right-panel-active"));
+        }
+        if (logInButton) {
+            logInButton.addEventListener('click', () => container.classList.remove("right-panel-active"));
+        }
+        
+        
+        if (window.jQuery) {
+            const $signupPageContainer = $('#signupPageContainer');
+            $('#signUpbtn').on('click', () => $signupPageContainer.addClass('right-panel-active'));
+            $('#logIn').on('click', () => $signupPageContainer.removeClass('right-panel-active'));
         }
     }
-});
+}
 
 //☆*: .｡. o(≧▽≦)o .｡.:*☆
 //HOMEPAGE AND SIGNUP PAGE SECTION DONE
@@ -545,7 +517,93 @@ if (document.getElementById("watchlistGrid")) {
             });
         }
     }
-    
+    });
 
 //00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 //00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+
+
+const TMDB_KEY = "90585727dddc037ab146b226b877e75c";   // Replace with your TMDB key
+const OMDB_KEY = "40ccbe12";   // Replace with your OMDb key
+const MOVIE_ID = "132";                 // Example: The Godfather
+
+const IMG_BASE = "https://image.tmdb.org/t/p/w500";
+
+async function loadMovie() {
+  try {
+    // Fetch movie details from TMDB
+    const movieRes = await fetch(`${BASE_URL}/movie/${MOVIE_ID}?api_key=${TMDB_KEY}&language=en-US`);
+    const movie = await movieRes.json();
+
+    // Fetch cast from TMDB
+    const castRes = await fetch(`${BASE_URL}/movie/${MOVIE_ID}/credits?api_key=${TMDB_KEY}&language=en-US`);
+    const credits = await castRes.json();
+
+    // Fetch IMDb rating from OMDb using imdb_id
+    let imdbRating = "N/A";
+    if (movie.imdb_id) {
+      const omdbRes = await fetch(`https://www.omdbapi.com/?i=${movie.imdb_id}&apikey=${OMDB_KEY}`);
+      const omdbData = await omdbRes.json();
+      imdbRating = omdbData.imdbRating || "N/A";
+    }
+
+    // Build cast HTML (limit to 8)
+    const castHTML = credits.cast.slice(0, 8).map(actor => `
+      <div class="cast-member">
+        <img src="${actor.profile_path ? IMG_BASE + actor.profile_path : 'https://via.placeholder.com/90x135?text=No+Image'}" alt="${actor.name}">
+        <div>${actor.name}</div>
+      </div>
+    `).join("");
+
+    // Build the movie card
+    const cardHTML = `
+      <div class="individual-movie-card">
+        <div class="poster">
+          <img src="${IMG_BASE + movie.poster_path}" alt="${movie.title}">
+        </div>
+        <div class="details">
+          <h2 class="title">${movie.title}</h2>
+          <p><strong>IMDb Rating:</strong> ⭐ ${imdbRating}</p>
+          <p class="overview">${movie.overview}</p>
+          <h3>Cast</h3>
+          <div class="cast">${castHTML}</div>
+        </div>
+      </div>
+    `;
+
+    // Inject into the fluid container
+    document.getElementById("individualMovieCards").innerHTML = cardHTML;
+
+  } catch (err) {
+    console.error("Error loading movie:", err);
+  }
+}
+
+loadMovie();
+
+
+
+// Search for a movie by name
+async function searchMovie(query) {
+  try {
+    const searchRes = await fetch(`${BASE_URL}/search/movie?api_key=${TMDB_KEY}&language=en-US&query=${encodeURIComponent(query)}`);
+    const searchData = await searchRes.json();
+
+    if (searchData.results && searchData.results.length > 0) {
+      // Always grab the first result’s ID
+      const firstResult = searchData.results[0];
+      await loadMovie(firstResult.id);
+    } else {
+      document.getElementById("movieCards").innerHTML = `<p>No results found for "${query}".</p>`;
+    }
+  } catch (err) {
+    console.error("Error searching movie:", err);
+  }
+}
+
+document.getElementById("searchBtn").addEventListener("click", () => {
+  const query = document.getElementById("searchInput").value.trim();
+  if (query) searchMovie(query);
+});
