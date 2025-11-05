@@ -1,4 +1,4 @@
-P1xie Flix
+**P1xie Flix**
 
 
 
@@ -7,13 +7,13 @@ P1xie Flix
 Live site: https://p1xieflix.web.app
 
 
-Overview
+**Overview**
 
 P1xie Flix is a retro-inspired, user-friendly movie streaming website designed to create and easy, fun viewing experience for its users. The platform lets users sign in, browse a curated library of movies, save favorites to a watchlist, and view detailed information on each film—all wrapped in an intuitive, visually engaging interface.
 
 
 
-Features
+**Features**
 
 -User Sign-In – Secure login for personalized watchlists.
 
@@ -27,7 +27,7 @@ Features
 
 
 
-Contributions
+**Contributions**
 
 Styling: All designs for the pages were designed individually by each person doing their page. 
 Rhichelle - homepage and sign in page
@@ -88,7 +88,7 @@ If the movie ID isn’t known, the app uses /search/movie?query=TITLE to look up
 
 
 
-Built With
+**Built With**
 
 -HTML
 
@@ -103,7 +103,7 @@ Built With
 
 
 
-Usage
+**Usage**
 
 -Visit the P1xie Flix website.
 
@@ -116,7 +116,7 @@ Usage
 
 ------------------------------------------------------
 
-Team
+**Team**
 
 Lara van Jaarsveld (251111)
 
@@ -129,7 +129,7 @@ Nkanyiso Nksosi (251306)
 
 
 
-Acknowledgements
+**Acknowledgements**
 
 Thanks to our lecturer and classmates for guidance and feedback throughout development.
 
@@ -153,7 +153,7 @@ https://developer.themoviedb.org/reference/getting-started
 
 
 
-License
+**License**
 
 This project was created for educational purposes as part of a coursework assignment.
 No commercial rights or streaming content ownership implied.
@@ -161,7 +161,7 @@ No commercial rights or streaming content ownership implied.
 
 
 
-Contact
+**Contact**
 
 For questions or collaboration:
 
