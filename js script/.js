@@ -1,5 +1,6 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // movie.js
 
 const API_KEY = "90585727dddc037ab146b226b877e75c";
@@ -8,11 +9,16 @@ const API_KEY = "90585727dddc037ab146b226b877e75c";
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
 
 const API_KEY = "90585727dddc037ab146b226b877e75c";
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -22,7 +28,11 @@ function getImageUrl(path, size = "w500") {
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // Fetch movie details
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -38,7 +48,11 @@ async function fetchMovie(movieId) {
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // Fetch cast
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -54,7 +68,11 @@ async function fetchCast(movieId) {
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // Render movie card
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -91,7 +109,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   const movieId = params.get("id") || "550"; // fallback: Fight Club
+=======
+  const movieId = params.get("id") || "550"; 
+>>>>>>> Stashed changes
 =======
   const movieId = params.get("id") || "550"; 
 >>>>>>> Stashed changes
